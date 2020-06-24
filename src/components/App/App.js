@@ -20,7 +20,7 @@ class App extends React.Component {
     }
 
     render = () => (
-        <div className="App h100">
+        <div className="App">
             <Provider store={Store}>
                 <PersistGate persistor={Persistor} loading={null}>
                     <BrowserRouter>

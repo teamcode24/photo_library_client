@@ -22,12 +22,10 @@ class ForgotPassword extends React.Component {
     }
 
     onSubmitClick = e => {
-        this.props.turnOnLoading()
         var data = {
             email: this.state.email,
         }
         if (data.email.length === 0) {
-            this.props.turnOffLoading()
         } else {
             this.props.autoCancelRequest(this.props.resetPassword(data))
                 .then(res => {
@@ -40,14 +38,13 @@ class ForgotPassword extends React.Component {
                     if (err.reason === 'unmounted') {
                         console.log("Component has unmounted")
                     } else {
-                        this.props.turnOffLoading()
                     }
                 })
             }
     }
 
     render = () => (
-        <div className={"forgot-password-panel" + this.props.getLoadingClass()}>
+        <div className="forgot-password-panel">
             <div className="forgot-password-input">
                 <h2>{this.state.text.header}</h2>
                 <div>{this.state.text.subHeader}</div>

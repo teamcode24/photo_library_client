@@ -25,14 +25,12 @@ class Register extends React.Component {
     }
 
     onSubmitClick = e => {
-        this.props.turnOnLoading()
         var data = {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
         }
         if (data.username.length === 0 || data.email.length === 0 || data.password.length === 0) {
-            this.props.turnOffLoading()
         } else {
             this.props.autoCancelRequest(this.props.createUser(data))
                 .then(res => {
@@ -45,14 +43,13 @@ class Register extends React.Component {
                     if (err.reason === 'unmounted') {
                         console.log("Component has unmounted")
                     } else {
-                        this.props.turnOffLoading()
                     }
                 })
         }
     }
 
     render = () => (
-        <div className={"register-panel" + this.props.getLoadingClass()}>
+        <div className="register-panel">
             <div className="register-logo">
                 <div className="register-login">
                     <div>Already have an account?</div>

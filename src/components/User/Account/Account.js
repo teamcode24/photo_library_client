@@ -10,20 +10,18 @@ class Account extends React.Component {
     }
 
     componentDidMount () {
-        this.props.turnOnLoading()
         this.props.autoCancelRequest(this.props.getProfile())
             .catch(err => {
                 if (err.reason === 'unmounted') {
                     console.log("Component has unmounted")
                 } else {
-                    this.props.turnOffLoading()
                 }
             })
     }
 
 
     render = () => (
-        <div className={"account-panel" + this.props.getLoadingClass()}>
+        <div className="account-panel">
             <div className="account-info">
                 <div className="account-name">
                     <div className="account-name-label">Name</div>

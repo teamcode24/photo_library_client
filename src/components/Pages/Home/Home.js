@@ -21,18 +21,14 @@ class Home extends React.Component {
     }
 
     loadImages = () => {
-        this.props.turnOnLoading()
-        console.log('match is', this.props.match)
         var data = {
             path: this.props.match.url
         }
         this.props.autoCancelRequest(this.props.getImages(data))
-        .then(res => this.props.turnOnLoading())
         .catch(err => {
             if (err.reason === 'unmounted') {
                 console.log("Component has unmounted")
             } else {
-                this.props.turnOffLoading()
             }
         })
     }

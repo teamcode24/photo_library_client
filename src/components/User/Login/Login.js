@@ -29,7 +29,6 @@ class Login extends React.Component {
     }
 
     onSubmitClick = e => {
-        this.props.turnOnLoading()
         var data = {
             email: this.state.email,
             password: this.state.password,
@@ -38,7 +37,6 @@ class Login extends React.Component {
             this.props.remember(data)
         }
         if (data.email.length === 0 || data.password.length === 0) {
-            this.props.turnOffLoading()
         } else {
             this.props.autoCancelRequest(this.props.login(data))
                 .then(res => {
@@ -52,14 +50,13 @@ class Login extends React.Component {
                     if (err.reason === 'unmounted') {
                         console.log("Component has unmounted")
                     } else {
-                        this.props.turnOffLoading()
                     }
                 })
         }
     }
 
     render = () => (
-        <div className={"login-panel" + this.props.getLoadingClass()}>
+        <div className="login-panel">
             <div className="login-input">
                 <div className="login-email">
                     <div>Email</div>
