@@ -43,6 +43,12 @@ class Home extends React.Component {
                 <h2>Trending Now</h2>
             </div>
             <div className="Home-content">
+                {this.props.images.map((image, index) => (
+                    <div key={index}>
+                        <div>{image.title}</div>
+                        <img src={image.urls.thumb} alt={image.title}></img>
+                    </div>
+                ))}
             </div>
         </div>
     )

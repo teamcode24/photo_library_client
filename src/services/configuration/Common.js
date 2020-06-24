@@ -42,6 +42,14 @@ export const joinUrlParams = (server, name, params) => {
 }
 
 export const joinServer = (server, path) => {
-    var url = "//" + server.host + ":" + server.port + "/" + clear(path)
+    var url = '';
+    if (server.protocol.length > 0) {
+        url = server.protocol + ':'
+    }
+    url += "//" + server.host;
+    if (server.port > 0) {
+        url += ":" + server.port
+    }
+    url += "/" + clear(path)
     return url
 }
