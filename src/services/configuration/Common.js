@@ -5,11 +5,11 @@ var clear = path => {
 
 export const joinUrl = (server, name, data) => {
     var url = '';
-    if (server.protocal.length > 0) {
-        url = server.protocal + ':'
+    if (server.protocol.length > 0) {
+        url = server.protocol + ':'
     }
     url += "//" + server.host;
-    if (server.port.length > 0) {
+    if (server.port > 0) {
         url += ":" + server.port
     }
     url += "/" + server.rev + "/" + clear(name)
@@ -21,11 +21,11 @@ export const joinUrl = (server, name, data) => {
 
 export const joinUrlParams = (server, name, params) => {
     var url = '';
-    if (server.protocal.length > 0) {
-        url = server.protocal + ':'
+    if (server.protocol.length > 0) {
+        url = server.protocol + ':'
     }
     url += "//" + server.host;
-    if (server.port !== undefined && server.port.length > 0) {
+    if (server.port > 0) {
         url += ":" + server.port
     }
     url += "/" + server.rev + "/" + clear(name)
