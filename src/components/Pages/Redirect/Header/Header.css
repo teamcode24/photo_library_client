@@ -1,9 +1,9 @@
-.topics-panel {
+.header-panel {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid red;
 }
 
-.topics-panel .topics-item {
-    margin-right: 30px;
+.header-panel .header-item {
+    margin-right: 20px;
 }

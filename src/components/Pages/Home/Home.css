@@ -1,4 +1,4 @@
-.Home-content {
+.Home-panel .Home-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

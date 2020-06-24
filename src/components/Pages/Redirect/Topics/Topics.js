@@ -28,9 +28,9 @@ class Topics extends React.Component {
     }
 
     render = () => (
-        <div className="Topics-panel">
+        <div className="topics-panel">
             {this.state.items.map((item, index) => (
-                <div key={index} className="Topics-item">
+                <div key={index} className="topics-item">
                     <Link to={item.link}>{item.text}</Link>
                 </div>
             ))}

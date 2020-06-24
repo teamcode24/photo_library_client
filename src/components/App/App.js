@@ -4,7 +4,6 @@ import Login from '../User/Login/Login'
 import ForgotPassword from '../User/ForgotPassword/ForgotPassword'
 import Register from '../User/Register/Register'
 import Header from '../Pages/Redirect/Header/Header'
-import Topics from '../Pages/Redirect/Topics/Topics'
 import Footer from '../Pages/Redirect/Footer/Footer'
 import Home from '../Pages/Home/Home'
 import { Provider } from 'react-redux'
@@ -25,7 +24,6 @@ class App extends React.Component {
                 <PersistGate persistor={Persistor} loading={null}>
                     <BrowserRouter>
                         <Header></Header>
-                        <Topics></Topics>
                         <Switch>
                             <Route exact path="/forgot_password" component={ForgotPassword}></Route>
                             <Route exact path="/login" component={Login}></Route>

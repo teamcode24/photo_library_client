@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { ImagesSelector, ImagesDispatch } from '../../../services/store/Images/ImagesMapping'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
+import Topics from '../Redirect/Topics/Topics'
 import './Home.css'
 
 class Home extends React.Component {
@@ -35,6 +36,7 @@ class Home extends React.Component {
 
     render = () => (
         <div className="Home-panel">
+            <Topics></Topics>
             <div className="Home-title">
                 <h2>Trending Now</h2>
             </div>
