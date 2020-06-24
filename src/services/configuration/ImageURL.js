@@ -1,7 +1,7 @@
 import { joinUrl, joinServer } from './Common'
 
 const ImageServer = {
-    protocol: 'https',
+    protocol: '',
     host: 'photo-server-467.herokuapp.com',
     port: 0,
     rev: 'api/v1/images',
