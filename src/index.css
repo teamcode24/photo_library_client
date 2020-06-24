@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+code {
+  font-family: Consolas, 'Courier New', monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
