@@ -4,7 +4,15 @@ var clear = path => {
 }
 
 export const joinUrl = (server, name, data) => {
-    var url = "//" + server.host + ":" + server.port + "/" + server.rev + "/" + clear(name)
+    var url = '';
+    if (server.protocal.length > 0) {
+        url = server.protocal + ':'
+    }
+    url += "//" + server.host;
+    if (server.port.length > 0) {
+        url += ":" + server.port
+    }
+    url += "/" + server.rev + "/" + clear(name)
     if (data !== undefined && data !== null) {
         url += "/" + data
     }
@@ -12,7 +20,15 @@ export const joinUrl = (server, name, data) => {
 }
 
 export const joinUrlParams = (server, name, params) => {
-    var url = "//" + server.host + ":" + server.port + "/" + server.rev + "/" + clear(name)
+    var url = '';
+    if (server.protocal.length > 0) {
+        url = server.protocal + ':'
+    }
+    url += "//" + server.host;
+    if (server.port !== undefined && server.port.length > 0) {
+        url += ":" + server.port
+    }
+    url += "/" + server.rev + "/" + clear(name)
     var params_str = ""
     var params_array = []
     var keys = Object.getOwnPropertyNames(params)
