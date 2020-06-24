@@ -11,16 +11,30 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
+        this.loadImages()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.loadImages()
+        }
+    }
+
+    loadImages = () => {
         this.props.turnOnLoading()
-        this.props.autoCancelRequest(this.props.getImages())
-            .then(res => this.props.turnOnLoading())
-            .catch(err => {
-                if (err.reason === 'unmounted') {
-                    console.log("Component has unmounted")
-                } else {
-                    this.props.turnOffLoading()
-                }
-            })
+        console.log('match is', this.props.match)
+        var data = {
+            path: this.props.match.url
+        }
+        this.props.autoCancelRequest(this.props.getImages(data))
+        .then(res => this.props.turnOnLoading())
+        .catch(err => {
+            if (err.reason === 'unmounted') {
+                console.log("Component has unmounted")
+            } else {
+                this.props.turnOffLoading()
+            }
+        })
     }
 
     render = () => (

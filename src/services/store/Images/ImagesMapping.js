@@ -10,7 +10,8 @@ export const ImagesSelector = state => ({
 
 export const ImagesDispatch = dispatch => ({
     getImages: input => {
-        var getImagePromise = axios.get(ImageURL.GET_IMAGES, {
+        var path = input?.path || ""
+        var getImagePromise = axios.get(ImageURL.GET_IMAGES(path), {
             headers: {authorization: Token.get()}
         })
         .then(AxiosSuccess)
