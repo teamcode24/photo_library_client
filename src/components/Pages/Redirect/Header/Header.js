@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 
 import { fade, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -10,7 +10,7 @@ import InputBase from '@material-ui/core/InputBase'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
 
-const useStyles = theme => ({
+const HeaderStyles = theme => ({
     root: {
         flexGrow: 1,
     },
@@ -84,13 +84,19 @@ class Header extends React.Component {
                             }}
                         />
                     </div>
-                    <Button color="inherit" className={this.props.classes.actionButton}>Topics</Button>
-                    <Button color="inherit" className={this.props.classes.actionButton}>Login</Button>
-                    <Button color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.joinButton}`}>Join free</Button>
+                    <Button component={RouterLink} to="/t"
+                        color="inherit" className={this.props.classes.actionButton}
+                    >Topics</Button>
+                    <Button component={RouterLink} to="/login"
+                        color="inherit" className={this.props.classes.actionButton}
+                    >Login</Button>
+                    <Button component={RouterLink} to="/join"
+                        color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.joinButton}`}
+                    >Join free</Button>
                 </Toolbar>
             </AppBar>
         </div>
     )
 }
 
-export default withStyles(useStyles, { withTheme: true })(Header)
+export default withStyles(HeaderStyles, { withTheme: true })(Header)
