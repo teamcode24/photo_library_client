@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { fade, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
@@ -48,12 +47,17 @@ const useStyles = theme => ({
         marginRight: theme.spacing(2),
     },
     actionButton: {
-        textTransform: 'capitalize',
         minWidth: '100px',
+        textTransform: 'capitalize',
+        marginLeft: theme.spacing(2),
     },
     joinButton: {
-        
-    }
+        color: theme.palette.common.white,
+        backgroundColor: '#37a866',
+        '&:hover': {
+            backgroundColor: '#37a866',
+        },
+    },
 })
 
 class Header extends React.Component {
@@ -82,7 +86,7 @@ class Header extends React.Component {
                     </div>
                     <Button color="inherit" className={this.props.classes.actionButton}>Topics</Button>
                     <Button color="inherit" className={this.props.classes.actionButton}>Login</Button>
-                    <Button color="inherit" className={this.props.classes.actionButton}>Join free</Button>
+                    <Button color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.joinButton}`}>Join free</Button>
                 </Toolbar>
             </AppBar>
         </div>
