@@ -1,13 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { CardImageDispatch } from '../../../services/store/CardImage/CardImageMapping'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
+import Typography from '@material-ui/core/Typography'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardActions from '@material-ui/core/CardActions'
-import CardActionArea from '@material-ui/core/CardActionArea'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddIcon from '@material-ui/icons/Add';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 const CardImageStyles = theme => ({
     root: {
@@ -22,11 +25,16 @@ const CardImageStyles = theme => ({
         right: "0px",
         zIndex: "1000",
     },
-    cardMedia: {
-        height: "200px",
-        
+    actionsBottom: {
+        position: "absolute",
+        bottom: "0px",
+        right: "0px",
+        zIndex: "1000",
     },
-    cardMediaActive: {
+    media: {
+        height: "200px",
+    },
+    mediaActive: {
         height: "200px",
         "&::after": {
             content: "''",
@@ -38,6 +46,16 @@ const CardImageStyles = theme => ({
             width: "100%",
             height: "100%",
         },
+    },
+    title: {
+        position: "absolute",
+        bottom: "0px",
+        left: "0px",
+        zIndex: "1000",
+        color: theme.palette.common.white,
+        padding: theme.spacing(1),
+        userSelect: "none",
+        cursor: "pointer",
     },
     actionsButton: {
         color: "#aaa",
@@ -56,6 +74,14 @@ class CardImage extends React.Component {
         this.state = {
             onActive: false,
         }
+    }
+
+    onDownloadClick = e => {
+        var data = {
+            url: this.props.image.urls.full,
+            name: this.props.image.title,
+        }
+        this.props.downloadImage(data)
     }
 
     onCardMouseEnter = e => {
@@ -81,12 +107,25 @@ class CardImage extends React.Component {
 
             <CardMedia
                 classes={{
-                    root: this.state.onActive === false ? this.props.classes.cardMedia : this.props.classes.cardMediaActive
+                    root: this.state.onActive === false ? this.props.classes.media : this.props.classes.mediaActive
                 }}
                 image={this.props.image.urls.thumb}
             />
+
+            {this.state.onActive === true &&
+                <Typography className={this.props.classes.title}>
+                    {this.props.image.title}
+                </Typography>
+            }
+
+            {this.state.onActive === true &&
+                <CardActions className={this.props.classes.actionsBottom}>
+                    <Button className={this.props.classes.actionsButton}><GetAppIcon onClick={this.onDownloadClick} /></Button>
+                </CardActions>
+            }
+
         </Card>
     )
 }
 
-export default withStyles(CardImageStyles, { theme: true })(CardImage)
+export default connect(null, CardImageDispatch)(withStyles(CardImageStyles, { theme: true })(CardImage))
