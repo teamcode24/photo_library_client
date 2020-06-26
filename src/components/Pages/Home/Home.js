@@ -3,20 +3,15 @@ import { connect } from 'react-redux'
 import { ImagesSelector, ImagesDispatch } from '../../../services/store/Images/ImagesMapping'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import Topics from '../Redirect/Topics/Topics'
+import CardImage from '../CardImage/CardImage'
 
 import { withStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardMedia from '@material-ui/core/CardMedia'
-import CardActions from '@material-ui/core/CardActions'
+import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 const HomeStyles = theme => ({
     root: {
-        maxWidth: 350,
-    },
-    card: {
+        padding: theme.spacing(0, 3),
     },
 })
 
@@ -53,25 +48,13 @@ class Home extends React.Component {
         <div className={this.props.classes.root}>
             <Topics></Topics>
             <Typography variant="h6">Trending Now</Typography>
-            {/* <div className="Home-content"> */}
+            <Grid container spacing={3}>
                 {this.props.images.map((image, index) => (
-                    <Card key={index} className={this.props.classes.card}>
-                        <CardActionArea>
-                            <CardMedia
-                                className={this.props.classes.cardImage}
-                                component="img"
-                                height="200"
-                                image={image.urls.thumb}
-                                title={image.title}
-                            />
-                        </CardActionArea>
-                    </Card>
-                    // <div key={index}>
-                    //     <div>{image.title}</div>
-                    //     <img src={image.urls.thumb} alt={image.title}></img>
-                    // </div>
+                    <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+                        <CardImage image={image}></CardImage>
+                    </Grid>
                 ))}
-            {/* </div> */}
+            </Grid>
         </div>
     )
 }

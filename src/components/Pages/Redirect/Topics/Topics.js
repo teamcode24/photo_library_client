@@ -9,7 +9,6 @@ const TopicStyles = theme => ({
         height: theme.spacing(8),
         display: 'flex',
         alignItems: 'center',
-        padding: theme.spacing(0, 3),
     },
     topics: {
         display: 'flex',
