@@ -4,6 +4,33 @@ import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../../services/store/User/UserMapping'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+
+const RegisterStyles = theme => ({
+    root: {
+        padding: theme.spacing(2, 0),
+    },
+    item: {
+        padding: theme.spacing(1, 0),
+    },
+    fieldName: {
+        display: "flex",
+        justifyContent: "space-between",
+        paddingBottom: theme.spacing(1),
+    },
+    fieldInput: {
+        width: "100%",
+        height: theme.spacing(4),
+        padding: theme.spacing(0.5, 1),
+        boxSizing: "border-box",
+    },
+    loginText: {
+        display: "flex",
+        justifyContent: "center",
+    },
+})
+
 class Register extends React.Component {
     constructor (props) {
         super(props)
@@ -49,58 +76,58 @@ class Register extends React.Component {
     }
 
     render = () => (
-        <div className="register-panel">
-            <div className="register-logo">
-                <div className="register-login">
-                    <div>Already have an account?</div>
-                    <Link to="/login">
-                        <input type="button" defaultValue={this.state.text.back}></input>
-                    </Link>
-                </div>
-            </div>
-            <div className="register-input">
-                <div className="register-name">
-                    <div className="register-first-name">
+        <Grid container direction="column" className={this.props.classes.root} alignItems="center">
+            <Grid item container xs={10} sm={8} md={6} lg={5}>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <div className={this.props.classes.loginText}>
+                        <div>Already have an account?</div><Link to="/login">{this.state.text.back}</Link>
+                    </div>
+                </Grid>
+                <Grid item xs={12} container direction="row" className={this.props.classes.item}>
+                    <Grid item xs={6} style={{paddingRight: '10px'}}>
                         <div>First name</div>
-                        <input type="text"
+                        <input type="text" className={this.props.classes.fieldInput}
                             value={this.state.firstName} onChange={this.props.setInputState(this, "firstName")}
                         ></input>
-                    </div>
-                    <div className="register-last-name">
+                    </Grid>
+                    <Grid item xs={6} style={{paddingLeft: '10px'}}>
                         <div>Last name</div>
-                        <input type="text"
+                        <input type="text" className={this.props.classes.fieldInput}
                             value={this.state.lastName} onChange={this.props.setInputState(this, "lastName")}
                         ></input>
-                    </div>
-                </div>
-                <div className="register-email">
+                    </Grid>
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
                     <div>Email address</div>
-                    <input type="email"
+                    <input type="email" className={this.props.classes.fieldInput}
                         value={this.state.email} onChange={this.props.setInputState(this, "email")}
                     ></input>
-                </div>
-                <div className="register-username">
-                    <div>Username</div>
-                    <div>(only letters, numbers, and underscores)</div>
-                    <input type="text"
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <div>Username (only letters, numbers, and underscores)</div>
+                    <input type="text"  className={this.props.classes.fieldInput}
                         value={this.state.username} onChange={this.props.setInputState(this, "username")}
                     ></input>
-                </div>
-                <div className="register-password">
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
                     <div>Password (min. 6 char)</div>
-                    <input type="password"
+                    <input type="password" className={this.props.classes.fieldInput}
                         value={this.state.password} onChange={this.props.setInputState(this, "password")}
                     ></input>
-                </div>
-                <div className="register-submit">
-                    <input type="button" defaultValue={this.state.text.submit} onClick={this.onSubmitClick}></input>
-                </div>
-                <div className="register-terms">
-                    <div>By joining, you agree to the Terms and Privacy Policy</div>
-                </div>
-            </div>
-        </div>
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <input type="button" className={this.props.classes.fieldInput}
+                        defaultValue={this.state.text.submit} onClick={this.onSubmitClick}
+                    ></input>
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <div className={this.props.classes.joinText}>
+                        <div>{this.state.text.signup_ask}</div><Link to="/join">{this.state.text.signup_text}</Link>
+                    </div>
+                </Grid>
+            </Grid>
+        </Grid>
     )
 }
 
-export default connect(UserSelector, UserDispatch)(DefaultComponent(Register))
+export default connect(UserSelector, UserDispatch)(DefaultComponent(withStyles(RegisterStyles, { theme: true })(Register)))

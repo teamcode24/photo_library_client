@@ -4,7 +4,6 @@ import Login from '../User/Login/Login'
 import ForgotPassword from '../User/ForgotPassword/ForgotPassword'
 import Register from '../User/Register/Register'
 import Header from '../Pages/Redirect/Header/Header'
-import Footer from '../Pages/Redirect/Footer/Footer'
 import Home from '../Pages/Home/Home'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -32,7 +31,6 @@ class App extends React.Component {
                             <Route exact path="/s/:search" component={Home}></Route>
                             <Route path="/*" component={Home}></Route>
                         </Switch>
-                        <Footer></Footer>
                     </BrowserRouter>
                 </PersistGate>
             </Provider>

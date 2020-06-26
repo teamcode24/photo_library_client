@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { ImagesSelector, ImagesDispatch } from '../../../services/store/Images/ImagesMapping'
-import DefaultComponent from '../../Extend/Default/DefaultComponent'
+import AuthComponent from '../../Extend/Default/AuthComponent'
 import Topics from '../Redirect/Topics/Topics'
 import CardImage from '../CardImage/CardImage'
+import Footer from '../Redirect/Footer/Footer'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -55,8 +56,9 @@ class Home extends React.Component {
                     </Grid>
                 ))}
             </Grid>
+            <Footer></Footer>
         </div>
     )
 }
 
-export default connect(ImagesSelector, ImagesDispatch)(DefaultComponent(withStyles(HomeStyles, { theme: true })(Home)))
+export default connect(ImagesSelector, ImagesDispatch)(AuthComponent(withStyles(HomeStyles, { theme: true })(Home)))

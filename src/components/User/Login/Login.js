@@ -3,7 +3,33 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../../services/store/User/UserMapping'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
-import './Login.css'
+
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+
+const LoginStyles = theme => ({
+    root: {
+        padding: theme.spacing(2, 0),
+    },
+    item: {
+        padding: theme.spacing(1, 0),
+    },
+    fieldName: {
+        display: "flex",
+        justifyContent: "space-between",
+        paddingBottom: theme.spacing(1),
+    },
+    fieldInput: {
+        width: "100%",
+        height: theme.spacing(4),
+        padding: theme.spacing(0.5, 1),
+        boxSizing: "border-box",
+    },
+    joinText: {
+        display: "flex",
+        justifyContent: "center",
+    },
+})
 
 class Login extends React.Component {
     constructor (props) {
@@ -56,33 +82,36 @@ class Login extends React.Component {
     }
 
     render = () => (
-        <div className="login-panel">
-            <div className="login-input">
-                <div className="login-email">
-                    <div>Email</div>
-                    <input type="email"
+        <Grid container direction="column" className={this.props.classes.root} alignItems="center">
+            <Grid item container xs={10} sm={8} md={6} lg={5}>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <div className={this.props.classes.fieldName}>Email</div>
+                    <input type="email" className={this.props.classes.fieldInput}
                         value={this.state.email} onChange={this.props.setInputState(this, "email")}
                     ></input>
-                </div>
-                <div className="login-password">
-                    <div>
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <div className={this.props.classes.fieldName}>
                         <div>Password</div>
                         <Link to="/forgot_password">{this.state.text.forgot}</Link>
                     </div>
-                    <input type="password"
+                    <input type="password" className={this.props.classes.fieldInput}
                         value={this.state.password} onChange={this.props.setInputState(this, "password")}
                     ></input>
-                </div>
-                <div className="login-submit">
-                    <input type="button" defaultValue={this.state.text.submit} onClick={this.onSubmitClick}></input>
-                </div>
-                <div className="login-redirect">
-                    <div>{this.state.text.signup_ask}</div>
-                    <Link to="/join">{this.state.text.signup_text}</Link>
-                </div>
-            </div>
-        </div>
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <input type="button" className={this.props.classes.fieldInput}
+                        defaultValue={this.state.text.submit} onClick={this.onSubmitClick}
+                    ></input>
+                </Grid>
+                <Grid item xs={12} className={this.props.classes.item}>
+                    <div className={this.props.classes.joinText}>
+                        <div>{this.state.text.signup_ask}</div><Link to="/join">{this.state.text.signup_text}</Link>
+                    </div>
+                </Grid>
+            </Grid>
+        </Grid>
     )
 }
 
-export default connect(UserSelector, UserDispatch)(DefaultComponent(Login))
+export default connect(UserSelector, UserDispatch)(DefaultComponent(withStyles(LoginStyles, { theme: true })(Login)))

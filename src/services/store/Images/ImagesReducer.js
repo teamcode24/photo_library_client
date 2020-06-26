@@ -14,33 +14,33 @@ const initialImagesState = {
 export const ImagesReducer = (state = initialImagesState, action) => {
     switch (action.type) {
         case ImagesActionTypes.GET_IMAGES:
-            var images = action.payload.data.images
-            var data = {
+            var images1 = action.payload.data.images
+            var data1 = {
                 ...state,
-                images: images,
+                images: images1,
             }
-            return data
+            return data1
         case ImagesActionTypes.GET_TOPICS:
-            var images = action.payload.data.images
-            var data = {
+            var images2 = action.payload.data.images
+            var data2 = {
                 ...state,
-                images: images,
+                images: images2,
             }
-            return data
+            return data2
         case ImagesActionTypes.SET_FILTER:
-            var images = action.payload.data.images
-            var data = {
+            var images3 = action.payload.data.images
+            var data3 = {
                 ...state,
-                images: images,
+                images: images3,
             }
-            return data
+            return data3
         case ImagesActionTypes.SET_SEARCH:
-            var images = action.payload.data.images
-            var data = {
+            var images4 = action.payload.data.images
+            var data4 = {
                 ...state,
-                images: images,
+                images: images4,
             }
-            return data
+            return data4
         default:
             return state
 
