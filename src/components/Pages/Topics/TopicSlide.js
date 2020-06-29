@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
 import AuthComponent from '../../Extend/Default/AuthComponent'
-import CardTopic from './TopicCard'
+import TopicCard from './TopicCard'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -31,7 +31,7 @@ class TopicSlide extends React.Component {
         var data = {
             path: this.props.match.url
         }
-        this.props.autoCancelRequest(this.props.getPhotos(data))
+        this.props.autoCancelRequest(this.props.getTopics(data))
         .catch(err => {
             if (err.reason === 'unmounted') {
                 console.log("Component has unmounted")
@@ -45,9 +45,9 @@ class TopicSlide extends React.Component {
             <div>Topic Slide</div>
             {this.props.topics.length > 0 &&
                 <Grid container spacing={3}>
-                    {this.props.topics.map((photo, index) => (
+                    {this.props.topics.map((itemTopic, index) => (
                         <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                            <CardTopic photo={photo}></CardTopic>
+                            <TopicCard itemTopic={itemTopic}></TopicCard>
                         </Grid>
                     ))}
                 </Grid>

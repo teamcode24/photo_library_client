@@ -13,12 +13,13 @@ export const TopicsSelector = state => ({
 export const TopicsDispatch = dispatch => ({
     getTopics: input => {
         var path = input?.path || ""
-        var getTopicPromise = axios.get(TopicURL.GET_TOPICS(path), {
+        var getTopicPromise = axios.get(TopicURL.GET_TOPICS, {
             headers: {authorization: Token.get()}
         })
         .then(AxiosSuccess)
         .then(
             res => {
+                console.log("get topics a1", path, res)
                 SendOff(dispatch,
                     TopicsActionTypes.GET_TOPICS
                 )(res)

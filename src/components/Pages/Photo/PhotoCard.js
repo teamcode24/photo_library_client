@@ -5,9 +5,9 @@ import { PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
-import Typography from '@material-ui/core/Typography'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardActions from '@material-ui/core/CardActions'
+import Typography from '@material-ui/core/Typography'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddIcon from '@material-ui/icons/Add';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -32,10 +32,10 @@ const PhotoCardStyles = theme => ({
         zIndex: "1000",
     },
     media: {
-        height: "200px",
+        height: 200,
     },
     mediaActive: {
-        height: "200px",
+        height: 200,
         "&::after": {
             content: "''",
             opacity: "0.25",
@@ -78,8 +78,8 @@ class PhotoCard extends React.Component {
 
     onDownloadClick = e => {
         var data = {
-            url: this.props.photo.urls.full,
-            name: this.props.photo.title,
+            url: this.props.itemPhoto.urls.full,
+            name: this.props.itemPhoto.title,
         }
         this.props.downloadImage(data)
     }
@@ -109,12 +109,12 @@ class PhotoCard extends React.Component {
                 classes={{
                     root: this.state.onActive === false ? this.props.classes.media : this.props.classes.mediaActive
                 }}
-                image={this.props.photo.urls.thumb}
+                image={this.props.itemPhoto.urls.thumb}
             />
 
             {this.state.onActive === true &&
                 <Typography className={this.props.classes.title}>
-                    {this.props.photo.title}
+                    {this.props.itemPhoto.title}
                 </Typography>
             }
 
