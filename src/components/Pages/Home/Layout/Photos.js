@@ -7,9 +7,7 @@ class Photos extends React.Component {
     }
 
     render = () => (
-        <>
-            {this.props.slide}
-        </>
+        <div>Photo layout 1</div>
     )
 }
 

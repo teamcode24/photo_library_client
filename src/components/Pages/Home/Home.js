@@ -1,14 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Topic from './Layout/Topics'
 import Photos from './Layout/Photos'
 
 import AuthComponent from '../../Extend/Default/AuthComponent'
 import Topics from '../Redirect/Topics'
 import Footer from '../Redirect/Footer'
-import TopicInfo from '../Topics/TopicInfo'
-import TopicSlide from '../Topics/TopicSlide'
 
 import { withStyles } from '@material-ui/core/styles'
 
@@ -48,11 +46,13 @@ class Home extends React.Component {
     }
 
     render = () => (
-        // <div className={this.props.classes.root}>
-        <div>
+        <div className={this.props.classes.root}>
             <Topics></Topics>
-            <Route exact path="/t" component={Topic}></Route>
-            <Route exact path="/t/:topic" component={TopicInfo}></Route>
+            <Switch>
+                <Route exact path="/t" component={Topic}></Route>
+                <Route exact path="/t/*" component={Topic}></Route>
+                <Route exact path="/photos" component={Photos}></Route>
+            </Switch>
             <Footer></Footer>
         </div>
     )

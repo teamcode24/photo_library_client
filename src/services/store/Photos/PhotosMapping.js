@@ -1,6 +1,6 @@
 import axios from 'axios'
 import PhotoURL from '../../configuration/PhotoURL'
-import { SendOff, AxiosSuccess, AxiosError, makeCancelable, JoinServerArray } from '../Common'
+import { SendOff, AxiosSuccess, AxiosError, makeCancelable, JoinServerArray, DownloadToFileAuth } from '../Common'
 import { PhotosActionTypes } from './PhotosReducer'
 import { Token } from '../Token'
 
@@ -31,5 +31,9 @@ export const PhotosDispatch = dispatch => ({
             }
         )
         return makeCancelable(getPhotoPromise)
+    },
+    downloadImage: input => {
+        var fetchImagePromise = DownloadToFileAuth(input.url, input.name)
+        return makeCancelable(fetchImagePromise)
     },
 })

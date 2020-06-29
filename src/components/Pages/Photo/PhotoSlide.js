@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { PhotosSelector, PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
 import AuthComponent from '../../Extend/Default/AuthComponent'
-import CardImage from '../ImageCard/ImageCard'
+import PhotoCard from './PhotoCard'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -26,7 +26,7 @@ class PhotoSlide extends React.Component {
             <Grid container spacing={3}>
                 {this.props.photos.map((photo, index) => (
                     <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                        <CardImage photo={photo}></CardImage>
+                        <PhotoCard photo={photo}></PhotoCard>
                     </Grid>
                 ))}
             </Grid>
