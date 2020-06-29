@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { CardImageDispatch } from '../../../services/store/CardImage/CardImageMapping'
+import { PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -12,7 +12,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddIcon from '@material-ui/icons/Add';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-const CardImageStyles = theme => ({
+const PhotoCardStyles = theme => ({
     root: {
         padding: theme.spacing(0, 3),
     },
@@ -68,7 +68,7 @@ const CardImageStyles = theme => ({
     },
 })
 
-class CardImage extends React.Component {
+class PhotoCard extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
@@ -128,4 +128,4 @@ class CardImage extends React.Component {
     )
 }
 
-export default connect(null, CardImageDispatch)(withStyles(CardImageStyles, { theme: true })(CardImage))
+export default connect(null, PhotosDispatch)(withStyles(PhotoCardStyles, { theme: true })(PhotoCard))

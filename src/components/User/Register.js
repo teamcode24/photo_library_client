@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { UserSelector, UserDispatch } from '../../../services/store/User/UserMapping'
-import DefaultComponent from '../../Extend/Default/DefaultComponent'
+import { UserSelector, UserDispatch } from '../../services/store/User/UserMapping'
+import DefaultComponent from '../Extend/Default/DefaultComponent'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'

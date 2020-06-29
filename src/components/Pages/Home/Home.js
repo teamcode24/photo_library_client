@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Topic from './Layout/Topics'
+import Photos from './Layout/Photos'
+
 import AuthComponent from '../../Extend/Default/AuthComponent'
-import Topics from '../Redirect/Topics/Topics'
-import Footer from '../Redirect/Footer/Footer'
-import TopicInfo from '../TopicInfo/TopicInfo'
-import CardSlide from '../CardSlide/CardSlide'
+import Topics from '../Redirect/Topics'
+import Footer from '../Redirect/Footer'
+import TopicInfo from '../Topics/TopicInfo'
+import TopicSlide from '../Topics/TopicSlide'
 
 import { withStyles } from '@material-ui/core/styles'
 
@@ -48,14 +51,8 @@ class Home extends React.Component {
         // <div className={this.props.classes.root}>
         <div>
             <Topics></Topics>
-            {/* <BrowserRouter>
-                <Switch>
-                    <Route exact path="/t/:topic" component={TopicInfo}></Route>
-                    <Route exact path="/s/:search" component={Home}></Route>
-                    <Route path="/*" component={Home}></Route>
-                </Switch>
-            </BrowserRouter> */}
-            <CardSlide></CardSlide>
+            <Route exact path="/t" component={Topic}></Route>
+            <Route exact path="/t/:topic" component={TopicInfo}></Route>
             <Footer></Footer>
         </div>
     )

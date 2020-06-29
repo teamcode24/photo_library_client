@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { AccountSelector, AccountDispatch } from '../../../services/store/Account/AccountMapping'
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import { AccountSelector, AccountDispatch } from '../../services/store/Account/AccountMapping'
+import AuthComponent from '../Extend/Default/AuthComponent'
 
 class Account extends React.Component {
     constructor (props) {

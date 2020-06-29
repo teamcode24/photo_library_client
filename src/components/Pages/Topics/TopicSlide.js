@@ -1,20 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { PhotosSelector, PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
+import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
 import AuthComponent from '../../Extend/Default/AuthComponent'
-import CardImage from '../CardImage/CardImage'
+import CardTopic from './TopicCard'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 
-const CardSlideStyles = theme => ({
+const TopicSlideStyles = theme => ({
     root: {
         padding: theme.spacing(0, 3),
     },
 })
 
-class CardSlide extends React.Component {
+class TopicSlide extends React.Component {
     constructor (props) {
         super(props)
         this.state = {}
@@ -22,11 +21,11 @@ class CardSlide extends React.Component {
 
     render = () => (
         <div className={this.props.classes.root}>
-            <Typography variant="h6">Trending Now</Typography>
+            <div>Topic Slide</div>
             <Grid container spacing={3}>
-                {this.props.photos.map((photo, index) => (
+                {this.props.topics.map((photo, index) => (
                     <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                        <CardImage photo={photo}></CardImage>
+                        <CardTopic photo={photo}></CardTopic>
                     </Grid>
                 ))}
             </Grid>
@@ -34,4 +33,4 @@ class CardSlide extends React.Component {
     )
 }
 
-export default connect(PhotosSelector, PhotosDispatch)(AuthComponent(withStyles(CardSlideStyles, { theme: true })(CardSlide)))
+export default connect(TopicsSelector, TopicsDispatch)(AuthComponent(withStyles(TopicSlideStyles, { theme: true })(TopicSlide)))

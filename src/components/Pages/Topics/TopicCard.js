@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
 import AuthComponent from '../../Extend/Default/AuthComponent'
-import CardImage from '../CardImage/CardImage'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -14,7 +13,7 @@ const TopicInfoStyles = theme => ({
     },
 })
 
-class CardTopic extends React.Component {
+class TopicCard extends React.Component {
     constructor (props) {
         super(props)
         this.state = {}
@@ -32,4 +31,4 @@ class CardTopic extends React.Component {
     )
 }
 
-export default connect(TopicsSelector, TopicsDispatch)(AuthComponent(withStyles(TopicInfoStyles, { theme: true })(CardTopic)))
+export default connect(TopicsSelector, TopicsDispatch)(AuthComponent(withStyles(TopicInfoStyles, { theme: true })(TopicCard)))
