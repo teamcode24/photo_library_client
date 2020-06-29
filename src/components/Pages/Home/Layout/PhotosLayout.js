@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Photos extends React.Component {
+class PhotosLayout extends React.Component {
     constructor (props) {
         super(props)
         this.state = {}
@@ -11,4 +11,4 @@ class Photos extends React.Component {
     )
 }
 
-export default Photos
+export default PhotosLayout

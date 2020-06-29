@@ -9,9 +9,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 const PhotoSlideStyles = theme => ({
-    root: {
-        padding: theme.spacing(0, 3),
-    },
+    root: {},
 })
 
 class PhotoSlide extends React.Component {
@@ -20,16 +18,41 @@ class PhotoSlide extends React.Component {
         this.state = {}
     }
 
+    componentDidMount() {
+        this.loadPhotos()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.loadPhotos()
+        }
+    }
+
+    loadPhotos = () => {
+        var data = {
+            path: this.props.match.url
+        }
+        this.props.autoCancelRequest(this.props.getPhotos(data))
+        .catch(err => {
+            if (err.reason === 'unmounted') {
+                console.log("Component has unmounted")
+            } else {
+            }
+        })
+    }
+
     render = () => (
         <div className={this.props.classes.root}>
-            <Typography variant="h6">Trending Now</Typography>
-            <Grid container spacing={3}>
-                {this.props.photos.map((photo, index) => (
-                    <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                        <PhotoCard photo={photo}></PhotoCard>
-                    </Grid>
-                ))}
-            </Grid>
+            <Typography variant="h6">Topic Slide</Typography>
+            {this.props.photos.length > 0 &&
+                <Grid container spacing={3}>
+                    {this.props.photos.map((photo, index) => (
+                        <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+                            <PhotoCard photo={photo}></PhotoCard>
+                        </Grid>
+                    ))}
+                </Grid>
+            }
         </div>
     )
 }

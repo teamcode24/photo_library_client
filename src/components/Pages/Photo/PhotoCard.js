@@ -78,8 +78,8 @@ class PhotoCard extends React.Component {
 
     onDownloadClick = e => {
         var data = {
-            url: this.props.image.urls.full,
-            name: this.props.image.title,
+            url: this.props.photo.urls.full,
+            name: this.props.photo.title,
         }
         this.props.downloadImage(data)
     }
@@ -109,12 +109,12 @@ class PhotoCard extends React.Component {
                 classes={{
                     root: this.state.onActive === false ? this.props.classes.media : this.props.classes.mediaActive
                 }}
-                image={this.props.image.urls.thumb}
+                image={this.props.photo.urls.thumb}
             />
 
             {this.state.onActive === true &&
                 <Typography className={this.props.classes.title}>
-                    {this.props.image.title}
+                    {this.props.photo.title}
                 </Typography>
             }
 

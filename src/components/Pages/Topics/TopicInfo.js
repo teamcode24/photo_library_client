@@ -21,7 +21,7 @@ class TopicInfo extends React.Component {
         <div className={this.props.classes.root}>
             <div>{this.props.title}</div>
             <div>{this.props.description}</div>
-            <img src={this.props.avatar}></img>
+            {/* <img src={this.props.avatar}></img> */}
             <div>by {this.props.creator}</div>
         </div>
     )

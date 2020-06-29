@@ -4,13 +4,9 @@ import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/T
 import AuthComponent from '../../Extend/Default/AuthComponent'
 
 import { withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 
 const TopicInfoStyles = theme => ({
-    root: {
-        padding: theme.spacing(0, 3),
-    },
+    root: {},
 })
 
 class TopicCard extends React.Component {
@@ -21,9 +17,10 @@ class TopicCard extends React.Component {
 
     render = () => (
         <div className={this.props.classes.root}>
-            <img src={this.props.backgroundImage}></img>
+            <div>110</div>
+            {/* <img src={this.props.backgroundImage}></img> */}
             <div>{this.props.title}</div>
-            <img src={this.props.avatar}></img>
+            {/* <img src={this.props.avatar}></img> */}
             <div>by {this.props.creator}</div>
             <div>{this.props.description}</div>
             <div>{this.props.contributors} contributions</div>

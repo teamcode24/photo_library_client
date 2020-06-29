@@ -8,8 +8,8 @@ const PhotoServer = {
 }
 
 const PhotoURL = {
-    GET_IMAGES: path => joinUrl(PhotoServer, path),
-    GET_IMAGE: path => joinUrl(PhotoServer, path),
+    GET_PHOTOS: path => joinUrl(PhotoServer, path),
+    GET_PHOTO: path => joinUrl(PhotoServer, path),
     JOIN_SERVER: path => joinServer(PhotoServer, path),
 }
 

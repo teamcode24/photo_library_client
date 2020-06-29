@@ -5,6 +5,7 @@ import { TopicsActionTypes } from './TopicsReducer'
 import { Token } from '../Token'
 
 export const TopicsSelector = state => ({
+    topicsList: state.home.topic.topicsList,
     topics: state.home.topic.topics,
     topic: state.home.topic.topic,
 })
@@ -53,5 +54,26 @@ export const TopicsDispatch = dispatch => ({
             }
         )
         return makeCancelable(getTopicPromise)
+    },
+    getTopicList: input => {
+        var getTopicListPromise = axios.get(TopicURL.GET_TOPIC_LIST, {
+            headers: {authorization: Token.get()}
+        })
+        .then(AxiosSuccess)
+        .then(
+            res => {
+                SendOff(dispatch,
+                    TopicsActionTypes.GET_TOPICS_LIST
+                )(res)
+                return Promise.resolve(res)
+            }
+        )
+        .catch(AxiosError)
+        .catch(
+            error => {
+                return Promise.reject(error)
+            }
+        )
+        return makeCancelable(getTopicListPromise)
     },
 })
