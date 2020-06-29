@@ -27,8 +27,8 @@ class App extends React.Component {
                             <Route exact path="/forgot_password" component={ForgotPassword}></Route>
                             <Route exact path="/login" component={Login}></Route>
                             <Route exact path="/join" component={Register}></Route>
-                            <Route exact path="/t/:topic" component={Home}></Route>
-                            <Route exact path="/s/:search" component={Home}></Route>
+                            {/* <Route exact path="/t/:topic" component={Home}></Route> */}
+                            {/* <Route exact path="/s/:search" component={Home}></Route> */}
                             <Route path="/*" component={Home}></Route>
                         </Switch>
                     </BrowserRouter>

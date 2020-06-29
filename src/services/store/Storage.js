@@ -15,3 +15,5 @@ const storeReducer = persistReducer(persistConfig, AllReducer)
 
 export const Store = createStore(storeReducer, applyMiddleware(thunk))
 export const Persistor = persistStore(Store)
+
+console.log('store is', Store.getState())

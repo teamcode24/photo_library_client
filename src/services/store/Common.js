@@ -61,14 +61,16 @@ export const JoinServer = (obj, propPath) => joiner => {
     target[lastProp] = joiner(target[lastProp])
 }
 
-export const JoinServerArray = (obj, arrayPath, propPath) => joiner => {
+export const JoinServerArray = (obj, arrayPath, propsPath) => joiner => {
     var target = obj
     var dirs = arrayPath.split(".")
-    for (var i=0; i<dirs.length; i++) {
+    for (let i=0; i<dirs.length; i++) {
         target = target[dirs[i]]
     }
-    for (var k=0; k<target.length; k++) {
-        JoinServer(target[k], propPath)(joiner)
+    for (let k=0; k<target.length; k++) {
+        propsPath.forEach(propPath => {
+            JoinServer(target[k], propPath)(joiner)
+        })
     }
 }
 

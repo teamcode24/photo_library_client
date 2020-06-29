@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ImagesSelector, ImagesDispatch } from '../../../services/store/Images/ImagesMapping'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AuthComponent from '../../Extend/Default/AuthComponent'
 import Topics from '../Redirect/Topics/Topics'
-import CardImage from '../CardImage/CardImage'
 import Footer from '../Redirect/Footer/Footer'
+import TopicInfo from '../TopicInfo/TopicInfo'
+import CardSlide from '../CardSlide/CardSlide'
 
 import { withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 
 const HomeStyles = theme => ({
     root: {
@@ -23,20 +22,20 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        this.loadImages()
+        // this.loadPhotos()
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
-            this.loadImages()
+            // this.loadPhotos()
         }
     }
 
-    loadImages = () => {
+    loadPhotos = () => {
         var data = {
             path: this.props.match.url
         }
-        this.props.autoCancelRequest(this.props.getImages(data))
+        this.props.autoCancelRequest(this.props.getPhotos(data))
         .catch(err => {
             if (err.reason === 'unmounted') {
                 console.log("Component has unmounted")
@@ -46,19 +45,20 @@ class Home extends React.Component {
     }
 
     render = () => (
-        <div className={this.props.classes.root}>
+        // <div className={this.props.classes.root}>
+        <div>
             <Topics></Topics>
-            <Typography variant="h6">Trending Now</Typography>
-            <Grid container spacing={3}>
-                {this.props.images.map((image, index) => (
-                    <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                        <CardImage image={image}></CardImage>
-                    </Grid>
-                ))}
-            </Grid>
+            {/* <BrowserRouter>
+                <Switch>
+                    <Route exact path="/t/:topic" component={TopicInfo}></Route>
+                    <Route exact path="/s/:search" component={Home}></Route>
+                    <Route path="/*" component={Home}></Route>
+                </Switch>
+            </BrowserRouter> */}
+            <CardSlide></CardSlide>
             <Footer></Footer>
         </div>
     )
 }
 
-export default connect(ImagesSelector, ImagesDispatch)(AuthComponent(withStyles(HomeStyles, { theme: true })(Home)))
+export default connect(null, null)(AuthComponent(withStyles(HomeStyles, { theme: true })(Home)))

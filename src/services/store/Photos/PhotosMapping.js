@@ -1,26 +1,25 @@
 import axios from 'axios'
-import ImageURL from '../../configuration/ImageURL'
+import PhotoURL from '../../configuration/PhotoURL'
 import { SendOff, AxiosSuccess, AxiosError, makeCancelable, JoinServerArray } from '../Common'
-import { ImagesActionTypes } from './ImagesReducer'
+import { PhotosActionTypes } from './PhotosReducer'
 import { Token } from '../Token'
 
-export const ImagesSelector = state => ({
-    images: state.home.images
+export const PhotosSelector = state => ({
+    photos: state.home.photo.photos
 })
 
-export const ImagesDispatch = dispatch => ({
-    getImages: input => {
+export const PhotosDispatch = dispatch => ({
+    getPhotos: input => {
         var path = input?.path || ""
-        var getImagePromise = axios.get(ImageURL.GET_IMAGES(path), {
+        var getPhotoPromise = axios.get(PhotoURL.GET_PHOTOS(path), {
             headers: {authorization: Token.get()}
         })
         .then(AxiosSuccess)
         .then(
             res => {
-                JoinServerArray(res, "data.images", "urls.thumb")(ImageURL.JOIN_SERVER)
-                JoinServerArray(res, "data.images", "urls.full")(ImageURL.JOIN_SERVER)
+                JoinServerArray(res, "data.photos", ["urls.thumb", "urls.full"])(PhotoURL.JOIN_SERVER)
                 SendOff(dispatch,
-                    ImagesActionTypes.GET_IMAGES
+                    PhotosActionTypes.GET_PHOTOS
                 )(res)
                 return Promise.resolve(res)
             }
@@ -31,6 +30,6 @@ export const ImagesDispatch = dispatch => ({
                 return Promise.reject(error)
             }
         )
-        return makeCancelable(getImagePromise)
+        return makeCancelable(getPhotoPromise)
     },
 })
