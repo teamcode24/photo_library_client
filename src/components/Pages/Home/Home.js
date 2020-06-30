@@ -29,6 +29,7 @@ class Home extends React.Component {
                 <Route exact path="/t" component={TopicsLayout}></Route>
                 <Route exact path="/t/*" component={TopicsLayout}></Route>
                 <Route exact path="/photos" component={PhotosLayout}></Route>
+                <Route path="/*" component={PhotosLayout}></Route>
             </Switch>
             <Footer></Footer>
         </div>

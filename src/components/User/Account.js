@@ -2,6 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { AccountSelector, AccountDispatch } from '../../services/store/Account/AccountMapping'
 import AuthComponent from '../Extend/Default/AuthComponent'
+import { withStyles } from '@material-ui/core/styles'
+
+const AccountStyles = theme => ({
+    root: {
+        margin: theme.spacing(2, 0),
+        "& > *:not(:last-child)": {
+            marginBottom: theme.spacing(1.5),
+        },
+    },
+    content: {
+        margin: theme.spacing(2),
+    },
+})
 
 class Account extends React.Component {
     constructor (props) {
@@ -21,8 +34,8 @@ class Account extends React.Component {
 
 
     render = () => (
-        <div className="account-panel">
-            <div className="account-info">
+        <div className={this.props.classes.root}>
+            <div className={this.props.classes.content}>
                 <div className="account-name">
                     <div className="account-name-label">Name</div>
                     <div className="account-name-value">
@@ -40,4 +53,4 @@ class Account extends React.Component {
     )
 }
 
-export default connect(AccountSelector, AccountDispatch)(AuthComponent(Account))
+export default connect(AccountSelector, AccountDispatch)(AuthComponent(withStyles(AccountStyles, { theme: true })(Account)))

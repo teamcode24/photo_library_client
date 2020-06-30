@@ -50,7 +50,6 @@ class TopicInfo extends React.Component {
             } else {
             }
         })
-        .then(console.log(this.props))
     }
 
     render = () => (

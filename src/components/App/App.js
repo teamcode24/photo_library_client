@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Login from '../User/Login'
 import ForgotPassword from '../User/ForgotPassword'
 import Register from '../User/Register'
+import Account from '../User/Account'
 import Header from '../Pages/Redirect/Header'
 import Home from '../Pages/Home/Home'
 import { Provider } from 'react-redux'
@@ -27,7 +28,7 @@ class App extends React.Component {
                             <Route exact path="/forgot_password" component={ForgotPassword}></Route>
                             <Route exact path="/login" component={Login}></Route>
                             <Route exact path="/join" component={Register}></Route>
-                            {/* <Route exact path="/t/:topic" component={Home}></Route> */}
+                            <Route exact path="/account" component={Account}></Route>
                             {/* <Route exact path="/s/:search" component={Home}></Route> */}
                             <Route path="/*" component={Home}></Route>
                         </Switch>
