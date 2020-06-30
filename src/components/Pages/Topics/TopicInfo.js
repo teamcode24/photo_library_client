@@ -4,10 +4,22 @@ import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/T
 import AuthComponent from '../../Extend/Default/AuthComponent'
 
 import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
 const TopicInfoStyles = theme => ({
     root: {
-        padding: theme.spacing(0, 3),
+        margin: theme.spacing(2, 0),
+        "& > *:not(:last-child)": {
+            marginBottom: theme.spacing(1.5),
+        },
+    },
+    title: {
+        textTransform: "capitalize",
+    },
+    description: {
+        overflow: "hidden",
+        display: '-webkit-box',
+        WebkitLineClamp: 2,
     },
 })
 
@@ -17,12 +29,41 @@ class TopicInfo extends React.Component {
         this.state = {}
     }
 
+    componentDidMount() {
+        this.getTopicInfo()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.getTopicInfo()
+        }
+    }
+
+    getTopicInfo = () => {
+        var data = {
+            path: this.props.match.params[0]
+        }
+        this.props.autoCancelRequest(this.props.getTopic(data))
+        .catch(err => {
+            if (err.reason === 'unmounted') {
+                console.log("Component has unmounted")
+            } else {
+            }
+        })
+        .then(console.log(this.props))
+    }
+
     render = () => (
         <div className={this.props.classes.root}>
-            <div>{this.props.title}</div>
-            <div>{this.props.description}</div>
-            {/* <img src={this.props.avatar}></img> */}
-            <div>by {this.props.creator}</div>
+            <Typography variant="h6" className={this.props.classes.title}>
+                {this.props.topic.title}
+            </Typography>
+            <Typography variant="body2" className={this.props.classes.description} className="ellipse-dot-2">
+                {this.props.topic.description}
+            </Typography>
+            <Typography variant="subtitle2">
+                Created by {this.props.topic.creator}
+            </Typography>
         </div>
     )
 }

@@ -44,7 +44,7 @@ class PhotoSlide extends React.Component {
     render = () => (
         <div className={this.props.classes.root}>
             <Typography variant="h6">Topic Slide</Typography>
-            {this.props.photos.length > 0 &&
+            {this.props.photos?.length > 0 &&
                 <Grid container spacing={3}>
                     {this.props.photos.map((itemPhoto, index) => (
                         <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
