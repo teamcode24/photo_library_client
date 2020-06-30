@@ -36,10 +36,6 @@ class TopicCard extends React.Component {
         this.state = {}
     }
 
-    componentDidMount() {
-        console.log(this.props.itemTopic)
-    }
-
     render = () => (
         <Card className={this.props.classes.root}>
             <CardMedia
@@ -50,14 +46,14 @@ class TopicCard extends React.Component {
                 image={this.props.itemTopic.backgroundImage}
             />
             <CardContent className={this.props.classes.content}>
-                <Typography>
+                <div>
                     <Typography variant="h6" className={this.props.classes.title}>
                         {this.props.itemTopic.title}
                     </Typography>
                     <Typography variant="subtitle2">
                         by {this.props.itemTopic.creator}
                     </Typography>
-                </Typography>
+                </div>
                 
                 <Typography variant="body2" className={this.props.classes.description} className="ellipse-dot-2">
                     {this.props.itemTopic.description}
