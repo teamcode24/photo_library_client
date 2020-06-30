@@ -42,7 +42,7 @@ class TopicSlide extends React.Component {
 
     render = () => (
         <div className={this.props.classes.root}>
-            <div>Topic Slide</div>
+            <h2>All topics</h2>
             {this.props.topics.length > 0 &&
                 <Grid container spacing={3}>
                     {this.props.topics.map((itemTopic, index) => (

@@ -18,7 +18,6 @@ export const TopicsReducer = (state = initialTopicsState, action) => {
                 ...state,
                 topics: topics1,
             }
-            console.log("get topics: ", data1)
             return data1
         case TopicsActionTypes.GET_TOPIC:
             var topic1 = action.payload.data.topics[0]

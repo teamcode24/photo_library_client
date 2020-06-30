@@ -1,9 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
 import AuthComponent from '../../Extend/Default/AuthComponent'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
 import Typography from '@material-ui/core/Typography'
 
@@ -11,10 +10,25 @@ import { withStyles } from '@material-ui/core/styles'
 
 const TopicCardStyles = theme => ({
     root: {},
+    content: {
+        "& > *:not(:last-child)": {
+            marginBottom: theme.spacing(2),
+        },
+    },
     media: {
         height: 150,
     },
-    title: {},
+    title: {
+        textTransform: "capitalize",
+    },
+    description: {
+        overflow: "hidden",
+        display: '-webkit-box',
+        WebkitLineClamp: 2,
+    },
+    contributions: {
+        fontSize: "smaller",
+    },
 })
 
 class TopicCard extends React.Component {
@@ -23,29 +37,38 @@ class TopicCard extends React.Component {
         this.state = {}
     }
 
+    componentDidMount() {
+        console.log(this.props.itemTopic)
+    }
+
     render = () => (
         <Card className={this.props.classes.root}>
             <CardMedia
                 classes={{
                     root: this.props.classes.media
                 }}
-                image={this.props.topic.backgroundImage}
+                component="img"
+                image={this.props.itemTopic.backgroundImage}
             />
-
-            <Typography className={this.props.classes.title}>
-                {this.props.itemTopic.title}
-            </Typography>
-
+            <CardContent className={this.props.classes.content}>
+                <Typography>
+                    <Typography variant="h6" className={this.props.classes.title}>
+                        {this.props.itemTopic.title}
+                    </Typography>
+                    <Typography variant="subtitle2">
+                        by {this.props.itemTopic.creator}
+                    </Typography>
+                </Typography>
+                
+                <Typography variant="body2" className={this.props.classes.description} className="ellipse-dot-2">
+                    {this.props.itemTopic.description}
+                </Typography>
+                <Typography variant="body2" className={this.props.classes.contributions}>
+                    {this.props.itemTopic.contributors} contributions
+                </Typography>
+            </CardContent>
         </Card>
-        // <div className={this.props.classes.root}>
-        //     <img src={this.props.backgroundImage}></img>
-        //     <div>{this.props.title.title}</div>
-        //     {/* <img src={this.props.avatar}></img> */}
-        //     <div>by {this.props.creator}</div>
-        //     <div>{this.props.description}</div>
-        //     <div>{this.props.contributors} contributions</div>
-        // </div>
     )
 }
 
-export default connect(TopicsSelector, TopicsDispatch)(AuthComponent(withStyles(TopicCardStyles, { theme: true })(TopicCard)))
+export default AuthComponent(withStyles(TopicCardStyles, { theme: true })(TopicCard))

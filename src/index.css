@@ -10,3 +10,10 @@ code {
 html, body, #root {
   height: 100%;
 }
+
+.ellipse-dot-2 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

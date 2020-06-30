@@ -19,7 +19,6 @@ export const TopicsDispatch = dispatch => ({
         .then(AxiosSuccess)
         .then(
             res => {
-                console.log("get topics a1", path, res)
                 SendOff(dispatch,
                     TopicsActionTypes.GET_TOPICS
                 )(res)
