@@ -51,7 +51,7 @@ export const makeCancelable = promise => {
     }
 }
 
-export const JoinServer = (obj, propPath) => joiner => {
+export const joinServerPath = (obj, propPath) => joiner => {
     var target = obj
     var dirs = propPath.split(".")
     var lastProp = dirs[dirs.length - 1]
@@ -61,7 +61,7 @@ export const JoinServer = (obj, propPath) => joiner => {
     target[lastProp] = joiner(target[lastProp])
 }
 
-export const JoinServerArray = (obj, arrayPath, propsPath) => joiner => {
+export const joinServerPathArray = (obj, arrayPath, propsPath) => joiner => {
     var target = obj
     var dirs = arrayPath.split(".")
     for (let i=0; i<dirs.length; i++) {
@@ -69,7 +69,7 @@ export const JoinServerArray = (obj, arrayPath, propsPath) => joiner => {
     }
     for (let k=0; k<target.length; k++) {
         propsPath.forEach(propPath => {
-            JoinServer(target[k], propPath)(joiner)
+            joinServerPath(target[k], propPath)(joiner)
         })
     }
 }

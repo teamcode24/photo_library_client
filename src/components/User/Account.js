@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { AccountSelector, AccountDispatch } from '../../services/store/Account/AccountMapping'
 import AuthComponent from '../Extend/Default/AuthComponent'
 import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
 
 const AccountStyles = theme => ({
     root: {
@@ -36,18 +37,20 @@ class Account extends React.Component {
     render = () => (
         <div className={this.props.classes.root}>
             <div className={this.props.classes.content}>
-                <div className="account-name">
-                    <div className="account-name-label">Name</div>
-                    <div className="account-name-value">
-                        {this.props.account.name}
-                    </div>
-                </div>
-                <div className="account-email">
-                    <div className="account-email-label">Email</div>
-                    <div className="account-email-value">
-                        {this.props.account.email}
-                    </div>
-                </div>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} container justify="center">
+                        <Grid item xs={12} sm={6} md={4} lg={3} container>
+                            <Grid xs={4}>Name</Grid>
+                            <Grid xs={8}>{this.props.account.name}</Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} container justify="center">
+                        <Grid item xs={12} sm={6} md={4} lg={3} container>
+                            <Grid xs={4}>Email</Grid>
+                            <Grid xs={8}>{this.props.account.email}</Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </div>
         </div>
     )

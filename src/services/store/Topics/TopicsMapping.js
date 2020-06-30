@@ -11,8 +11,8 @@ export const TopicsSelector = state => ({
 })
 
 export const TopicsDispatch = dispatch => ({
-    getTopics: input => {
-        var path = input?.path || ""
+    getTopics: input => 
+    {
         var getTopicPromise = axios.get(TopicURL.GET_TOPICS, {
             headers: {authorization: Token.get()}
         })

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
+import AuthComponent from '../../Extend/Default/AuthComponent'
 
 import { fade, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -9,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 const HeaderStyles = theme => ({
     root: {
@@ -45,6 +48,9 @@ const HeaderStyles = theme => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
+    },
+    iconButton: {
+        minWidth: "50px",
     },
     actionButton: {
         minWidth: '100px',
@@ -84,19 +90,33 @@ class Header extends React.Component {
                             }}
                         />
                     </div>
-                    <Button component={RouterLink} to="/t"
-                        color="inherit" className={this.props.classes.actionButton}
-                    >Topics</Button>
-                    <Button component={RouterLink} to="/login"
-                        color="inherit" className={this.props.classes.actionButton}
-                    >Login</Button>
-                    <Button component={RouterLink} to="/join"
-                        color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.joinButton}`}
-                    >Join free</Button>
+                    <Button component={RouterLink} to="/t" color="inherit" className={this.props.classes.actionButton}>
+                        Topics
+                    </Button>
+                    {!this.props.isAuthenticated && (
+                        <>
+                        <Button component={RouterLink} to="/login"color="inherit" className={this.props.classes.actionButton}>
+                            Login
+                        </Button>
+                        <Button component={RouterLink} to="/join" color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.joinButton}`}>
+                            Join free
+                        </Button>
+                        </>
+                    )}
+                    {this.props.isAuthenticated && (
+                        <>
+                        <Button component={RouterLink} to="/" color="inherit" className={this.props.classes.iconButton}>
+                            <NotificationsIcon />
+                        </Button>
+                        <Button component={RouterLink} to="/" color="inherit" className={this.props.classes.iconButton}>
+                            <AccountCircleIcon />
+                        </Button>
+                        </>
+                    )}
                 </Toolbar>
             </AppBar>
         </div>
     )
 }
 
-export default withStyles(HeaderStyles, { withTheme: true })(Header)
+export default AuthComponent(withStyles(HeaderStyles, { withTheme: true })(Header))

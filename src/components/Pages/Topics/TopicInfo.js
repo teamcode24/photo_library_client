@@ -57,7 +57,7 @@ class TopicInfo extends React.Component {
             <Typography variant="h6" className={this.props.classes.title}>
                 {this.props.topic.title}
             </Typography>
-            <Typography variant="body2" className={this.props.classes.description} className="ellipse-dot-2">
+            <Typography variant="body2" className={`${this.props.classes.description} ellipse-dot-2`}>
                 {this.props.topic.description}
             </Typography>
             <Typography variant="subtitle2">

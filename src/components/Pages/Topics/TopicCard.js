@@ -55,7 +55,7 @@ class TopicCard extends React.Component {
                     </Typography>
                 </div>
                 
-                <Typography variant="body2" className={this.props.classes.description} className="ellipse-dot-2">
+                <Typography variant="body2" className={`${this.props.classes.description} ellipse-dot-2`}>
                     {this.props.itemTopic.description}
                 </Typography>
                 <Typography variant="body2" className={this.props.classes.contributions}>

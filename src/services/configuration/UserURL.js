@@ -1,18 +1,27 @@
-import { joinUrl } from './Common'
+import { mergePath, selectServer } from './Common'
 
-const UserServer = {
+const ProductionServer = {
     protocol: '',
     host: 'photo-server-467.herokuapp.com',
     port: 0,
     rev: 'api/v1/users',
 }
 
+const DevelopmentServer = {
+    protocol: '',
+    host: 'localhost',
+    port: 3000,
+    rev: 'api/v1/users',
+}
+
+const UserServer = selectServer(ProductionServer, DevelopmentServer)
+
 const UserURL = {
-    LOGIN: joinUrl(UserServer, 'login'),
-    CREATE_USER: joinUrl(UserServer, 'register'),
-    RESET_PASSWORD: joinUrl(UserServer, 'sendmail'),
-    VERIFY: hash => joinUrl(UserServer, 'confirmation', hash),
-    GET_PROFILE: joinUrl(UserServer, 'profile'),
+    LOGIN: mergePath(UserServer, 'login'),
+    CREATE_USER: mergePath(UserServer, 'register'),
+    RESET_PASSWORD: mergePath(UserServer, 'sendmail'),
+    VERIFY: hash => mergePath(UserServer, 'confirmation', hash),
+    GET_PROFILE: mergePath(UserServer, 'profile'),
 }
 
 export default UserURL

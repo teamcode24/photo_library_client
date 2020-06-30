@@ -1,6 +1,6 @@
 import axios from 'axios'
 import PhotoURL from '../../configuration/PhotoURL'
-import { SendOff, AxiosSuccess, AxiosError, makeCancelable, JoinServerArray, DownloadToFileAuth } from '../Common'
+import { SendOff, AxiosSuccess, AxiosError, makeCancelable, joinServerPathArray, DownloadToFileAuth } from '../Common'
 import { PhotosActionTypes } from './PhotosReducer'
 import { Token } from '../Token'
 
@@ -17,7 +17,7 @@ export const PhotosDispatch = dispatch => ({
         .then(AxiosSuccess)
         .then(
             res => {
-                JoinServerArray(res, "data.photos", ["urls.thumb", "urls.full"])(PhotoURL.JOIN_SERVER)
+                joinServerPathArray(res, "data.photos", ["urls.thumb", "urls.full"])(PhotoURL.JOIN_SERVER)
                 SendOff(dispatch,
                     PhotosActionTypes.GET_PHOTOS
                 )(res)

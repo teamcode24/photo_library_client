@@ -1,9 +1,6 @@
-var clear = path => {
-    path = path.replace(/^\/*(.+?)\/*$/g, "$1")
-    return path
-}
+import urljoin from 'url-join'
 
-export const joinUrl = (server, name, data) => {
+const serverPath = server => {
     var url = '';
     if (server.protocol.length > 0) {
         url = server.protocol + ':'
@@ -11,24 +8,11 @@ export const joinUrl = (server, name, data) => {
     url += "//" + server.host;
     if (server.port > 0) {
         url += ":" + server.port
-    }
-    url += "/" + server.rev + "/" + clear(name)
-    if (data !== undefined && data !== null) {
-        url += "/" + data
     }
     return url
 }
 
-export const joinUrlParams = (server, name, params) => {
-    var url = '';
-    if (server.protocol.length > 0) {
-        url = server.protocol + ':'
-    }
-    url += "//" + server.host;
-    if (server.port > 0) {
-        url += ":" + server.port
-    }
-    url += "/" + server.rev + "/" + clear(name)
+const getParamsPath = params => {
     var params_str = ""
     var params_array = []
     var keys = Object.getOwnPropertyNames(params)
@@ -38,18 +22,25 @@ export const joinUrlParams = (server, name, params) => {
     if (params_array.length > 0) {
         params_str = "?" + params_array.join("&")
     }
-    return url + params_str
+    return params_str
 }
 
-export const joinServer = (server, path) => {
-    var url = '';
-    if (server.protocol.length > 0) {
-        url = server.protocol + ':'
-    }
-    url += "//" + server.host;
-    if (server.port > 0) {
-        url += ":" + server.port
-    }
-    url += "/" + clear(path)
+export const mergePath = (server, name = '', data = '') => {
+    var url = urljoin(serverPath(server), server.rev, name, data)
     return url
+}
+
+export const mergePathParams = (server, name = '', params = '') => {
+    var url = urljoin(serverPath(server), server.rev, name)
+    return urljoin(url, getParamsPath(params))
+}
+
+export const joinServerPath = (server, path = '') => {
+    return urljoin(serverPath(server), path)
+}
+
+export const selectServer = (productionServer, developmentServer) => {
+    // if (process.env.NODE_ENV === 'production') return productionServer
+    // else return developmentServer
+    return productionServer
 }

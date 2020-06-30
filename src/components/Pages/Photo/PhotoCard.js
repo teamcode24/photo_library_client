@@ -112,18 +112,16 @@ class PhotoCard extends React.Component {
                 image={this.props.itemPhoto.urls.thumb}
             />
 
-            {this.state.onActive === true &&
+            {this.state.onActive === true && (
+                <>
                 <Typography className={this.props.classes.title}>
                     {this.props.itemPhoto.title}
                 </Typography>
-            }
-
-            {this.state.onActive === true &&
                 <CardActions className={this.props.classes.actionsBottom}>
                     <Button className={this.props.classes.actionsButton}><GetAppIcon onClick={this.onDownloadClick} /></Button>
                 </CardActions>
-            }
-
+                </>
+            )}
         </Card>
     )
 }
