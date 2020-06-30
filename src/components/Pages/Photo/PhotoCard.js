@@ -118,7 +118,7 @@ class PhotoCard extends React.Component {
                     {this.props.itemPhoto.title}
                 </Typography>
                 <CardActions className={this.props.classes.actionsBottom}>
-                    <Button className={this.props.classes.actionsButton}><GetAppIcon onClick={this.onDownloadClick} /></Button>
+                    <Button className={this.props.classes.actionsButton} onClick={this.onDownloadClick}><GetAppIcon /></Button>
                 </CardActions>
                 </>
             )}
