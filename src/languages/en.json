@@ -9,6 +9,14 @@
             "signup_ask": "Don't have an account?",
             "signup_text": "Join",
             "message_required": "Please enter all required fields"
+        },
+        "forgotpassword": {
+            "title": "Reset Password",
+            "description": "To reset password, please provide your email",
+            "submit": "Send Reset Instructions",
+            "back": "Back",
+            "message_success": "Your password has been reset successfully",
+            "message_required": "Please enter all required fields"
         }
     }
 }

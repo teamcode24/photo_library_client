@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../services/store/User/UserMapping'
 import DefaultComponent from '../Extend/Default/DefaultComponent'
+import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 
@@ -48,7 +49,7 @@ class ForgotPassword extends React.Component {
                 .then(res => {
                     this.props.redirect("/login", "", {
                         type: "success",
-                        message: this.state.text.messageSuccess,
+                        message: this.props.t('user.forgot_password.message_success'),
                     })
                 })
                 .catch(err => {
@@ -64,10 +65,10 @@ class ForgotPassword extends React.Component {
         <Grid container direction="column" className={this.props.classes.root} alignItems="center">
             <Grid item container xs={10} sm={8} md={6} lg={5}>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <h2>{this.state.text.header}</h2>
+                    <h2>{this.props.t('user.forgot_password.title')}</h2>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <div>{this.state.text.subHeader}</div>
+                    <div>{this.props.t('user.forgot_password.description')}</div>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <input type="email" className="w100" placeholder="Email" className={this.props.classes.fieldInput}
@@ -76,13 +77,13 @@ class ForgotPassword extends React.Component {
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <input type="button" className={this.props.classes.fieldInput}
-                        defaultValue={this.state.text.submit} onClick={this.onSubmitClick}
+                        defaultValue={this.props.t('user.forgot_password.submit')}onClick={this.onSubmitClick}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <Link to="/login">
                         <input type="button" className={this.props.classes.fieldInput}
-                            defaultValue={this.state.text.back}
+                            defaultValue={this.props.t('user.forgot_password.back')}
                         ></input>
                     </Link>
                 </Grid>
@@ -91,4 +92,4 @@ class ForgotPassword extends React.Component {
     )
 }
 
-export default connect(UserSelector, UserDispatch)(DefaultComponent(withStyles(ForgotPasswordStyles, { theme: true })(ForgotPassword)))
+export default connect(UserSelector, UserDispatch)(DefaultComponent(withTranslation()(withStyles(ForgotPasswordStyles, { theme: true })(ForgotPassword))))

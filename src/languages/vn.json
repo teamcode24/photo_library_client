@@ -9,6 +9,14 @@
             "signup_ask": "Chưa có tài khoản?",
             "signup_text": "Tham gia",
             "message_required": "Vui lòng nhập các trường bắt buộc"
+        },
+        "forgot_password": {
+            "title": "Đặt lại mật khẩu",
+            "description": "Để đặt lại mật khẩu, hãy cung cấp email của bạn",
+            "submit": "Gửi yêu cầu đặt lại mật khẩu",
+            "back": "Quay lại",
+            "message_success": "Mật khẩu của bạn đã được đặt lại thành công",
+            "message_required": "Vui lòng nhập các trường bắt buộc"
         }
     }
 }
