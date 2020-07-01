@@ -1,0 +1,14 @@
+{
+    "user": {
+        "login": {
+            "email": "Email",
+            "password": "Password",
+            "remember": "Remember",
+            "submit": "Login",
+            "forgot_password": "Forgot your password?",
+            "signup_ask": "Don't have an account?",
+            "signup_text": "Join",
+            "message_required": "Please enter all required fields"
+        }
+    }
+}

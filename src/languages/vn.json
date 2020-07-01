@@ -1,0 +1,14 @@
+{
+    "user": {
+        "login": {
+            "email": "Email",
+            "password": "Mật khẩu",
+            "remember": "Ghi nhớ",
+            "submit": "Đăng nhập",
+            "forgot_password": "Đặt lại mật khẩu?",
+            "signup_ask": "Chưa có tài khoản?",
+            "signup_text": "Tham gia",
+            "message_required": "Vui lòng nhập các trường bắt buộc"
+        }
+    }
+}

@@ -6,6 +6,7 @@ import DefaultComponent from '../Extend/Default/DefaultComponent'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import { withTranslation } from 'react-i18next'
 
 const LoginStyles = theme => ({
     root: {
@@ -85,15 +86,15 @@ class Login extends React.Component {
         <Grid container direction="column" className={this.props.classes.root} alignItems="center">
             <Grid item container xs={10} sm={8} md={6} lg={5}>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <div className={this.props.classes.fieldName}>Email</div>
+                    <div className={this.props.classes.fieldName}>{this.props.t('user.login.email')}</div>
                     <input type="email" className={this.props.classes.fieldInput}
                         value={this.state.email} onChange={this.props.setInputState(this, "email")}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <div className={this.props.classes.fieldName}>
-                        <div>Password</div>
-                        <Link to="/forgot_password">{this.state.text.forgot}</Link>
+                        <div>{this.props.t('user.login.password')}</div>
+                        <Link to="/forgot_password">{this.props.t('user.login.forgot_password')}</Link>
                     </div>
                     <input type="password" className={this.props.classes.fieldInput}
                         value={this.state.password} onChange={this.props.setInputState(this, "password")}
@@ -101,12 +102,12 @@ class Login extends React.Component {
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <input type="button" className={this.props.classes.fieldInput}
-                        defaultValue={this.state.text.submit} onClick={this.onSubmitClick}
+                        defaultValue={this.props.t('user.login.submit')} onClick={this.onSubmitClick}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <div className={this.props.classes.joinText}>
-                        <div>{this.state.text.signup_ask}</div><Link to="/join">{this.state.text.signup_text}</Link>
+                        <div>{this.props.t('user.login.signup_ask')}</div><Link to="/join">{this.props.t('user.login.signup_text')}</Link>
                     </div>
                 </Grid>
             </Grid>
@@ -114,4 +115,4 @@ class Login extends React.Component {
     )
 }
 
-export default connect(UserSelector, UserDispatch)(DefaultComponent(withStyles(LoginStyles, { theme: true })(Login)))
+export default connect(UserSelector, UserDispatch)(DefaultComponent(withTranslation()(withStyles(LoginStyles, { theme: true })(Login))))
