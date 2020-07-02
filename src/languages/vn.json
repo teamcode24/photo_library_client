@@ -1,7 +1,7 @@
 {
     "user": {
         "login": {
-            "email": "Email",
+            "email": "Địa chỉ email",
             "password": "Mật khẩu",
             "remember": "Ghi nhớ",
             "submit": "Đăng nhập",
@@ -27,6 +27,10 @@
             "username": "Tài khoản (chỉ bao gồm chữ, số, và gạch dưới)",
             "password": "Mật khẩu (tối thiểu 6 ký tự)",
             "submit": "Tham gia"
+        },
+        "account" : {
+            "name": "Tên",
+            "email": "Địa chỉ email"
         }
     }
 }

@@ -4,6 +4,7 @@ import { AccountSelector, AccountDispatch } from '../../services/store/Account/A
 import AuthComponent from '../Extend/Default/AuthComponent'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import { withTranslation } from 'react-i18next'
 
 const AccountStyles = theme => ({
     root: {
@@ -40,14 +41,14 @@ class Account extends React.Component {
                 <Grid container spacing={3}>
                     <Grid item xs={12} container justify="center">
                         <Grid item xs={12} sm={6} md={4} lg={3} container>
-                            <Grid xs={4}>Name</Grid>
-                            <Grid xs={8}>{this.props.account.name}</Grid>
+                            <Grid item xs={4}>{this.props.t('user.account.name')}</Grid>
+                            <Grid item xs={8}>{this.props.account.name}</Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={12} container justify="center">
                         <Grid item xs={12} sm={6} md={4} lg={3} container>
-                            <Grid xs={4}>Email</Grid>
-                            <Grid xs={8}>{this.props.account.email}</Grid>
+                            <Grid item xs={4}>{this.props.t('user.account.email')}</Grid>
+                            <Grid item xs={8}>{this.props.account.email}</Grid>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -56,4 +57,4 @@ class Account extends React.Component {
     )
 }
 
-export default connect(AccountSelector, AccountDispatch)(AuthComponent(withStyles(AccountStyles, { theme: true })(Account)))
+export default connect(AccountSelector, AccountDispatch)(AuthComponent(withTranslation()(withStyles(AccountStyles, { theme: true })(Account))))

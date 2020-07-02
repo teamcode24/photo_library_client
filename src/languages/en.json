@@ -27,6 +27,10 @@
             "username": "Username (only letters, numbers, and underscores)",
             "password": "Password (min. 6 char)",
             "submit": "Join"
+        },
+        "account" : {
+            "name": "Name",
+            "email": "Email"
         }
     }
 }
