@@ -71,7 +71,7 @@ class ForgotPassword extends React.Component {
                     <div>{this.props.t('user.forgot_password.description')}</div>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <input type="email" className="w100" placeholder="Email" className={this.props.classes.fieldInput}
+                    <input type="email" placeholder="Email" className={this.props.classes.fieldInput}
                         value={this.state.email} onChange={this.props.setInputState(this, "email")}
                     ></input>
                 </Grid>

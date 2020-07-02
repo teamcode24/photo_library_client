@@ -17,6 +17,16 @@
             "back": "Quay lại",
             "message_success": "Mật khẩu của bạn đã được đặt lại thành công",
             "message_required": "Vui lòng nhập các trường bắt buộc"
+        },
+        "register": {
+            "register_ask": "Bạn đã có tài khoản?",
+            "back": "Đăng nhập",
+            "first_name": "Tên",
+            "last_name": "Họ đệm",
+            "email": "Địa chỉ email",
+            "username": "Tài khoản (chỉ bao gồm chữ, số, và gạch dưới)",
+            "password": "Mật khẩu (tối thiểu 6 ký tự)",
+            "submit": "Tham gia"
         }
     }
 }

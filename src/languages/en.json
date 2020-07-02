@@ -17,6 +17,16 @@
             "back": "Back",
             "message_success": "Your password has been reset successfully",
             "message_required": "Please enter all required fields"
+        },
+        "register": {
+            "register_ask": "Already have an account?",
+            "back": "Login",
+            "first_name": "First name",
+            "last_name": "Last name",
+            "email": "Email address",
+            "username": "Username (only letters, numbers, and underscores)",
+            "password": "Password (min. 6 char)",
+            "submit": "Join"
         }
     }
 }

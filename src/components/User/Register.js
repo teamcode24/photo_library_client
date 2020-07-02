@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../services/store/User/UserMapping'
 import DefaultComponent from '../Extend/Default/DefaultComponent'
 
+import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 
@@ -80,54 +81,49 @@ class Register extends React.Component {
             <Grid item container xs={10} sm={8} md={6} lg={5}>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <div className={this.props.classes.loginText}>
-                        <div>Already have an account?</div><Link to="/login">{this.state.text.back}</Link>
+                        <div>{this.props.t('user.register.register_ask')}</div><Link to="/login">{this.props.t('user.register.back')}</Link>
                     </div>
                 </Grid>
                 <Grid item xs={12} container direction="row" className={this.props.classes.item}>
                     <Grid item xs={6} style={{paddingRight: '10px'}}>
-                        <div>First name</div>
+                        <div>{this.props.t('user.register.first_name')}</div>
                         <input type="text" className={this.props.classes.fieldInput}
                             value={this.state.firstName} onChange={this.props.setInputState(this, "firstName")}
                         ></input>
                     </Grid>
                     <Grid item xs={6} style={{paddingLeft: '10px'}}>
-                        <div>Last name</div>
+                        <div>{this.props.t('user.register.last_name')}</div>
                         <input type="text" className={this.props.classes.fieldInput}
                             value={this.state.lastName} onChange={this.props.setInputState(this, "lastName")}
                         ></input>
                     </Grid>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <div>Email address</div>
+                    <div>{this.props.t('user.register.email')}</div>
                     <input type="email" className={this.props.classes.fieldInput}
                         value={this.state.email} onChange={this.props.setInputState(this, "email")}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <div>Username (only letters, numbers, and underscores)</div>
+                    <div>{this.props.t('user.register.username')}</div>
                     <input type="text"  className={this.props.classes.fieldInput}
                         value={this.state.username} onChange={this.props.setInputState(this, "username")}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <div>Password (min. 6 char)</div>
+                    <div>{this.props.t('user.register.password')}</div>
                     <input type="password" className={this.props.classes.fieldInput}
                         value={this.state.password} onChange={this.props.setInputState(this, "password")}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <input type="button" className={this.props.classes.fieldInput}
-                        defaultValue={this.state.text.submit} onClick={this.onSubmitClick}
+                        defaultValue={this.props.t('user.register.submit')} onClick={this.onSubmitClick}
                     ></input>
-                </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <div className={this.props.classes.joinText}>
-                        <div>{this.state.text.signup_ask}</div><Link to="/join">{this.state.text.signup_text}</Link>
-                    </div>
                 </Grid>
             </Grid>
         </Grid>
     )
 }
 
-export default connect(UserSelector, UserDispatch)(DefaultComponent(withStyles(RegisterStyles, { theme: true })(Register)))
+export default connect(UserSelector, UserDispatch)(DefaultComponent(withTranslation()(withStyles(RegisterStyles, { theme: true })(Register))))
