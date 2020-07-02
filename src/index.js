@@ -4,7 +4,7 @@ import App from './components/App/App'
 import * as serviceWorker from './serviceWorker'
 import { I18nextProvider } from 'react-i18next'
 import i18next from 'i18next'
-import './i18n'
+import './libraryConfig/i18n'
 import './index.css'
 
 ReactDOM.render(
