@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
 import { Link as RouterLink } from 'react-router-dom'
 
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import { withStyles } from '@material-ui/core/styles'
 import Link from '@material-ui/core/Link'
 
@@ -70,4 +70,4 @@ class Topics extends React.Component {
     )
 }
 
-export default connect(TopicsSelector, TopicsDispatch)(AuthComponent(withStyles(TopicStyles, { theme: true })(Topics)))
+export default connect(TopicsSelector, TopicsDispatch)(DefaultComponent(withStyles(TopicStyles, { theme: true })(Topics)))

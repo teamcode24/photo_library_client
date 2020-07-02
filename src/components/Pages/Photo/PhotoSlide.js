@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { PhotosSelector, PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import PhotoCard from './PhotoCard'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -55,4 +55,4 @@ class PhotoSlide extends React.Component {
     )
 }
 
-export default connect(PhotosSelector, PhotosDispatch)(AuthComponent(withStyles(PhotoSlideStyles, { theme: true })(PhotoSlide)))
+export default connect(PhotosSelector, PhotosDispatch)(DefaultComponent(withStyles(PhotoSlideStyles, { theme: true })(PhotoSlide)))

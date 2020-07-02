@@ -1,5 +1,5 @@
 import React from 'react'
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
@@ -66,4 +66,4 @@ class TopicCard extends React.Component {
     )
 }
 
-export default AuthComponent(withStyles(TopicCardStyles, { theme: true })(TopicCard))
+export default DefaultComponent(withStyles(TopicCardStyles, { theme: true })(TopicCard))

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -67,4 +67,4 @@ class TopicInfo extends React.Component {
     )
 }
 
-export default connect(TopicsSelector, TopicsDispatch)(AuthComponent(withStyles(TopicInfoStyles, { theme: true })(TopicInfo)))
+export default connect(TopicsSelector, TopicsDispatch)(DefaultComponent(withStyles(TopicInfoStyles, { theme: true })(TopicInfo)))

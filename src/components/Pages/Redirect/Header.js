@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 
 import { fade, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -119,4 +119,4 @@ class Header extends React.Component {
     )
 }
 
-export default AuthComponent(withStyles(HeaderStyles, { withTheme: true })(Header))
+export default DefaultComponent(withStyles(HeaderStyles, { withTheme: true })(Header))

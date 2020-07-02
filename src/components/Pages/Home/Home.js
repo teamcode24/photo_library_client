@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import TopicsLayout from './Layout/TopicsLayout'
 import PhotosLayout from './Layout/PhotosLayout'
 
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import Topics from '../Redirect/Topics'
 import Footer from '../Redirect/Footer'
 
@@ -36,4 +36,4 @@ class Home extends React.Component {
     )
 }
 
-export default connect(null, null)(AuthComponent(withStyles(HomeStyles, { theme: true })(Home)))
+export default connect(null, null)(DefaultComponent(withStyles(HomeStyles, { theme: true })(Home)))

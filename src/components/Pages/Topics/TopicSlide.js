@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
-import AuthComponent from '../../Extend/Default/AuthComponent'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import TopicCard from './TopicCard'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -60,4 +60,4 @@ TopicSlide.defaultProps = {
     topics: [],
 }
 
-export default connect(TopicsSelector, TopicsDispatch)(AuthComponent(withStyles(TopicSlideStyles, { theme: true })(TopicSlide)))
+export default connect(TopicsSelector, TopicsDispatch)(DefaultComponent(withStyles(TopicSlideStyles, { theme: true })(TopicSlide)))
