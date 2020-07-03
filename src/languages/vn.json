@@ -8,7 +8,8 @@
             "forgot_password": "Đặt lại mật khẩu?",
             "signup_ask": "Chưa có tài khoản?",
             "signup_text": "Tham gia",
-            "message_required": "Vui lòng nhập các trường bắt buộc"
+            "message_required": "Vui lòng nhập các trường bắt buộc",
+            "message_success": "Đăng nhập thành công"
         },
         "forgot_password": {
             "title": "Đặt lại mật khẩu",
@@ -26,7 +27,8 @@
             "email": "Địa chỉ email",
             "username": "Tài khoản (chỉ bao gồm chữ, số, và gạch dưới)",
             "password": "Mật khẩu (tối thiểu 6 ký tự)",
-            "submit": "Tham gia"
+            "submit": "Tham gia",
+            "messageSuccess": "Tài khoản của bạn đã được đăng ký thành công"
         },
         "account" : {
             "name": "Tên",

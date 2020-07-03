@@ -27,15 +27,6 @@ class ForgotPassword extends React.Component {
         super(props)
         this.state = {
             email: '',
-            text: {
-                header: 'Reset Password',
-                subHeader: 'To reset password, please provide your email',
-                submit: 'Send Reset Instructions',
-                back: 'Back',
-                messageSuccess: 'Your password has been reset successfully!',
-                messageError: 'Something went wrong, please try again',
-                messageRequired: 'Please enter all required field',
-            },
         }
     }
 

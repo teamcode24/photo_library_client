@@ -8,7 +8,8 @@
             "forgot_password": "Forgot your password?",
             "signup_ask": "Don't have an account?",
             "signup_text": "Join",
-            "message_required": "Please enter all required fields"
+            "message_required": "Please enter all required fields",
+            "message_success": "Login successful"
         },
         "forgotpassword": {
             "title": "Reset Password",
@@ -26,7 +27,8 @@
             "email": "Email address",
             "username": "Username (only letters, numbers, and underscores)",
             "password": "Password (min. 6 char)",
-            "submit": "Join"
+            "submit": "Join",
+            "messageSuccess": "Your account has been successfully registed"
         },
         "account" : {
             "name": "Name",

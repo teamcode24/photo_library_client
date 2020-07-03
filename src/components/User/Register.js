@@ -41,14 +41,6 @@ class Register extends React.Component {
             username: '',
             email: '',
             password: '',
-            text: {
-                forgot: 'Forgot your password?',
-                submit: 'Join',
-                back: 'Login',
-                messageError: 'Something went wrong, please try again',
-                messageRequired: 'Please enter all required field',
-                messageSuccess: 'Your account has been successfully registed',
-            },
         }
     }
 
@@ -64,7 +56,7 @@ class Register extends React.Component {
                 .then(res => {
                     this.props.redirect("/login", "", {
                         type: "success",
-                        message: this.state.text.messageSuccess,
+                        message: this.props.t('user.register.message_success'),
                     })
                 })
                 .catch(err => {

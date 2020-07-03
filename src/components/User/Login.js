@@ -38,16 +38,6 @@ class Login extends React.Component {
         this.state = {
             email: 'wewik92609@mailrnl.com',
             password: '123',
-            text: {
-                remember: 'Remember',
-                forgot: 'Forgot your password?',
-                submit: 'Login',
-                signup_ask: 'Don\'t have an account?',
-                signup_text: 'Join',
-                messageSuccess: 'Login successful',
-                messageError: 'Invalid email or password',
-                messageRequired: 'Please enter all required field',
-            },
         }
     }
 
@@ -70,7 +60,7 @@ class Login extends React.Component {
                     console.log("login success:", res)
                     this.props.redirect("/account", "", {
                         type: "success",
-                        message: this.state.text.messageSuccess,
+                        message: this.props.t('user.login.message_success'),
                     })
                 })
                 .catch(err => {
