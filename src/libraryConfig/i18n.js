@@ -19,7 +19,7 @@ i18n
     resources,
     lng: "vi",
     fallbackLng: 'vi',
-    debug: true,
+    debug: false,
     interpolation: {
         escapeValue: false,
     }
