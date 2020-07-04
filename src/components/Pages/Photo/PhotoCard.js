@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
 
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -81,7 +82,11 @@ class PhotoCard extends React.Component {
             url: this.props.itemPhoto.urls.full,
             name: this.props.itemPhoto.title,
         }
-        this.props.downloadImage(data)
+        this.props.onLoading()
+        this.props.downloadImage(data).promise
+        .then(res => {
+            this.props.offLoading()
+        })
     }
 
     onCardMouseEnter = e => {
@@ -126,4 +131,4 @@ class PhotoCard extends React.Component {
     )
 }
 
-export default connect(null, PhotosDispatch)(withStyles(PhotoCardStyles, { theme: true })(PhotoCard))
+export default connect(null, PhotosDispatch)(DefaultComponent(withStyles(PhotoCardStyles, { theme: true })(PhotoCard)))

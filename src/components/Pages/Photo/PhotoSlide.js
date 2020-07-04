@@ -31,11 +31,16 @@ class PhotoSlide extends React.Component {
         var data = {
             path: this.props.match.url
         }
+        this.props.onLoading()
         this.props.autoCancelRequest(this.props.getPhotos(data))
+        .then(res => {
+            this.props.offLoading()
+        })
         .catch(err => {
             if (err.reason === 'unmounted') {
                 console.log("Component has unmounted")
             } else {
+                this.props.offLoading()
             }
         })
     }
