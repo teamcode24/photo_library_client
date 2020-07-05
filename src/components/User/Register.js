@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../services/store/User/UserProps'
 import DefaultComponent from '../Extend/Default/DefaultComponent'
+import PathName from '../App/PathName'
 
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
@@ -73,7 +74,8 @@ class Register extends React.Component {
             <Grid item container xs={10} sm={8} md={6} lg={5}>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <div className={this.props.classes.loginText}>
-                        <div>{this.props.t('user.register.register_ask')}</div><Link to="/login">{this.props.t('user.register.back')}</Link>
+                        <div>{this.props.t('user.register.register_ask')}</div>
+                        <Link to={PathName.user.login}>{this.props.t('user.register.back')}</Link>
                     </div>
                 </Grid>
                 <Grid item xs={12} container direction="row" className={this.props.classes.item}>

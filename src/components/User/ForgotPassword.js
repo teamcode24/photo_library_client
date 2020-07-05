@@ -6,6 +6,7 @@ import DefaultComponent from '../Extend/Default/DefaultComponent'
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import PathName from '../App/PathName'
 
 const ForgotPasswordStyles = theme => ({
     root: {
@@ -72,7 +73,7 @@ class ForgotPassword extends React.Component {
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <Link to="/login">
+                    <Link to={PathName.user.login}>
                         <input type="button" className={this.props.classes.fieldInput}
                             defaultValue={this.props.t('user.forgot_password.back')}
                         ></input>

@@ -124,7 +124,7 @@ class Header extends React.Component {
                     </Button>
                     <Divider orientation="vertical" flexItem className={this.props.classes.divider} />
 
-                    {!this.props.isAuthenticated && (
+                    {!this.props.isAuthenticated() && (
                         <>
                         <Button component={RouterLink} to={PathName.user.login} color="inherit" className={this.props.classes.actionButton}>
                             Login
@@ -135,7 +135,7 @@ class Header extends React.Component {
                         </>
                     )}
 
-                    {this.props.isAuthenticated && (
+                    {this.props.isAuthenticated() && (
                         <>
                         <Button component={RouterLink} to={PathName.default.root} color="inherit" className={this.props.classes.iconButton}>
                             <NotificationsIcon />

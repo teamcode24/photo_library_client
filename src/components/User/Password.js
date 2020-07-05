@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../services/store/User/UserProps'
 import AuthComponent from '../Extend/Default/AuthComponent'
+import PathName from '../App/PathName'
+
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -65,11 +67,11 @@ class Password extends React.Component {
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <input type="button" className={this.props.classes.fieldInput}
-                        defaultValue={this.props.t('user.password.submit')}onClick={this.onSubmitClick}
+                        defaultValue={this.props.t('user.password.submit')} onClick={this.onSubmitClick}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <Link to="/login">
+                    <Link to={PathName.user.login}>
                         <input type="button" className={this.props.classes.fieldInput}
                             defaultValue={this.props.t('user.password.back')}
                         ></input>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../services/store/User/UserProps'
 import DefaultComponent from '../Extend/Default/DefaultComponent'
+import PathName from '../App/PathName'
 
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -41,14 +42,11 @@ class Login extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.setState(this.props.user)
-    }
-
     onSubmitClick = e => {
         var data = {
             email: this.state.email,
             password: this.state.password,
+            remember: true,
         }
         if (data.email.length !== 0) {
             this.props.remember(data)
@@ -84,7 +82,7 @@ class Login extends React.Component {
                 <Grid item xs={12} className={this.props.classes.item}>
                     <div className={this.props.classes.fieldName}>
                         <div>{this.props.t('user.login.password')}</div>
-                        <Link to="/forgot_password">{this.props.t('user.login.forgot_password')}</Link>
+                        <Link to={PathName.user.forgot_password}>{this.props.t('user.login.forgot_password')}</Link>
                     </div>
                     <input type="password" className={this.props.classes.fieldInput}
                         value={this.state.password} onChange={this.props.setInputState(this, "password")}
@@ -97,7 +95,8 @@ class Login extends React.Component {
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <div className={this.props.classes.joinText}>
-                        <div>{this.props.t('user.login.signup_ask')}</div><Link to="/join">{this.props.t('user.login.signup_text')}</Link>
+                        <div>{this.props.t('user.login.signup_ask')}</div>
+                        <Link to={PathName.user.join}>{this.props.t('user.login.signup_text')}</Link>
                     </div>
                 </Grid>
             </Grid>
