@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
+import { PhotosDispatch } from '../../../services/store/Photos/PhotosProps'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 
 import { withStyles } from '@material-ui/core/styles'

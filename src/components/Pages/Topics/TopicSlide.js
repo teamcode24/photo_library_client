@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
+import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsProps'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import TopicCard from './TopicCard'
 

@@ -28,11 +28,17 @@
             "username": "Username (only letters, numbers, and underscores)",
             "password": "Password (min. 6 char)",
             "submit": "Join",
-            "messageSuccess": "Your account has been successfully registed"
+            "message_success": "Your account has been successfully registed"
         },
         "account" : {
             "name": "Name",
             "email": "Email"
+        },
+        "password": {
+            "title": "Change your password",
+            "new_password": "New password",
+            "submit": "Change password",
+            "back": "Back"
         }
     }
 }

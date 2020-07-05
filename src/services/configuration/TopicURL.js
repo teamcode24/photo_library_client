@@ -18,7 +18,7 @@ const TopicServer = selectServer(ProductionServer, DevelopmentServer)
 
 const TopicURL = {
     GET_TOPICS: mergePath(TopicServer, ""),
-    GET_TOPIC: path => mergePath(TopicServer, path),
+    GET_TOPIC_INFO: path => mergePath(TopicServer, path),
     GET_TOPIC_LIST: mergePath(TopicServer, "/list"),
 }
 

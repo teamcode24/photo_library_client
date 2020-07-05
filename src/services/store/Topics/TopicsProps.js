@@ -35,14 +35,14 @@ export const TopicsDispatch = dispatch => ({
     },
     getTopic: input => {
         var path = input?.path || ""
-        var getTopicPromise = axios.get(TopicURL.GET_TOPIC(path), {
+        var getTopicPromise = axios.get(TopicURL.GET_TOPIC_INFO(path), {
             headers: {authorization: Token.get()}
         })
         .then(AxiosSuccess)
         .then(
             res => {
                 SendOff(dispatch,
-                    TopicsActionTypes.GET_TOPIC
+                    TopicsActionTypes.GET_TOPIC_INFO
                 )(res)
                 return Promise.resolve(res)
             }

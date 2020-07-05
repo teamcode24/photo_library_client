@@ -1,8 +1,6 @@
 import React from 'react'
-import Loading from '../Middle/Loading'
-import Redirection from '../Middle/Redirection'
-import Authenticate from '../Middle/Authenticate'
-import AutoCancelRequest from '../Middle/AutoCancelRequest'
+import DefaultComponent from './DefaultComponent'
+import AutoRedirect from '../Middle/AutoRedirect'
 
 const AuthComponent = ChildComponent => {
     class AuthComponent extends React.Component {
@@ -15,7 +13,7 @@ const AuthComponent = ChildComponent => {
             return <ChildComponent {...this.props} />
         }
     }
-    return Authenticate(AutoCancelRequest(Redirection(Loading(AuthComponent))))
+    return AutoRedirect(DefaultComponent(AuthComponent))
 }
 
 export default AuthComponent

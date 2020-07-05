@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { AccountSelector, AccountDispatch } from '../../services/store/Account/AccountMapping'
+import { AccountSelector, AccountDispatch } from '../../services/store/Account/AccountProps'
 import AuthComponent from '../Extend/Default/AuthComponent'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'

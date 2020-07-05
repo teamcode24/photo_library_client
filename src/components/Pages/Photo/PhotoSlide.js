@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { PhotosSelector, PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
+import { PhotosSelector, PhotosDispatch } from '../../../services/store/Photos/PhotosProps'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import PhotoCard from './PhotoCard'
 

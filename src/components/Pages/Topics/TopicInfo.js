@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
+import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsProps'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -44,9 +44,10 @@ class TopicInfo extends React.Component {
         var data = {
             path: this.props.match.params[0]
         }
+        this.props.onLoading()
         this.props.autoCancelRequest(this.props.getTopic(data))
         .then(res => {
-            console.log(res)
+            this.props.offLoading()
         })
         .catch(err => {
             if (err.reason === 'unmounted') {
