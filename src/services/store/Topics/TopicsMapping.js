@@ -7,7 +7,7 @@ import { Token } from '../Token'
 export const TopicsSelector = state => ({
     topicsList: state.home.topic.topicsList,
     topics: state.home.topic.topics,
-    topic: state.home.topic.topic,
+    topicInfo: state.home.topic.topicInfo,
 })
 
 export const TopicsDispatch = dispatch => ({

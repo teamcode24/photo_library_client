@@ -7,7 +7,7 @@ export const TopicsActionTypes = {
 const initialTopicsState = {
     topicsList: [],
     topics: [],
-    topic: {}
+    topicInfo: {}
 }
 
 export const TopicsReducer = (state = initialTopicsState, action) => {
@@ -23,7 +23,7 @@ export const TopicsReducer = (state = initialTopicsState, action) => {
             var topic1 = action.payload.data.topics[0]
             var data2 = {
                 ...state,
-                topic: topic1,
+                topicInfo: topic1,
             }
             return data2
         case TopicsActionTypes.GET_TOPICS_LIST:
