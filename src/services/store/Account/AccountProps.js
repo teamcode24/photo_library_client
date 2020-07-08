@@ -2,6 +2,7 @@ import axios from 'axios'
 import UserURL from '../../configuration/UserURL'
 import { SendOff, AxiosSuccess, AxiosError, makeCancelable } from '../Common'
 import { AccountActionTypes } from './AccountReducer'
+import { AuthentActionTypes } from '../Authent/AuthentReducer'
 import { Token } from '../Token'
 
 export const AccountSelector = state => ({account: state.account})
@@ -27,4 +28,9 @@ export const AccountDispatch = dispatch => ({
         )
         return makeCancelable(loginPromise)
     },
+    logout: input => {
+        SendOff(dispatch,
+            AuthentActionTypes.LOGOUT
+        )()
+    }
 })

@@ -13,9 +13,6 @@ const AccountStyles = theme => ({
             marginBottom: theme.spacing(1.5),
         },
     },
-    content: {
-        margin: theme.spacing(2),
-    },
 })
 
 class Account extends React.Component {
@@ -25,34 +22,47 @@ class Account extends React.Component {
     }
 
     componentDidMount () {
+        this.props.onLoading()
         this.props.autoCancelRequest(this.props.getProfile())
+            .then(res => {
+                this.props.offLoading()
+            })
             .catch(err => {
                 if (err.reason === 'unmounted') {
                     console.log("Component has unmounted")
                 } else {
+                    this.props.offLoading()
                 }
             })
     }
 
+    onLogoutClick = () => {
+        this.props.logout()
+    }
 
     render = () => (
         <div className={this.props.classes.root}>
-            <div className={this.props.classes.content}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} container justify="center">
-                        <Grid item xs={12} sm={6} md={4} lg={3} container>
-                            <Grid item xs={4}>{this.props.t('user.account.name')}</Grid>
-                            <Grid item xs={8}>{this.props.account.name}</Grid>
-                        </Grid>
+            <Grid container>
+                <Grid item container>
+                    <Grid item xs={12} sm={6} md={4} lg={3} container m={0}>
+                        <Grid item xs={4}>{this.props.t('user.account.name')}</Grid>
+                        <Grid item xs={8}>{this.props.account.name}</Grid>
                     </Grid>
-                    <Grid item xs={12} container justify="center">
-                        <Grid item xs={12} sm={6} md={4} lg={3} container>
-                            <Grid item xs={4}>{this.props.t('user.account.email')}</Grid>
-                            <Grid item xs={8}>{this.props.account.email}</Grid>
+                </Grid>
+                <Grid item container>
+                    <Grid item xs={12} sm={6} md={4} lg={3} container>
+                        <Grid item xs={4}>{this.props.t('user.account.email')}</Grid>
+                        <Grid item xs={8}>{this.props.account.email}</Grid>
+                    </Grid>
+                </Grid>
+                <Grid item container>
+                    <Grid item xs={12} sm={6} md={4} lg={3} container>
+                        <Grid item xs={12}>
+                            <button onClick={this.onLogoutClick}>Logout</button>
                         </Grid>
                     </Grid>
                 </Grid>
-            </div>
+            </Grid>
         </div>
     )
 }

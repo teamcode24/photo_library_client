@@ -8,6 +8,7 @@ import PathName from '../../App/PathName'
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import InputField from '../../Extend/UI/InputField'
 
 const RegisterStyles = theme => ({
     root: {
@@ -53,8 +54,10 @@ class Register extends React.Component {
         }
         if (data.username.length === 0 || data.email.length === 0 || data.password.length === 0) {
         } else {
+            this.props.onLoading()
             this.props.autoCancelRequest(this.props.createUser(data))
                 .then(res => {
+                    this.props.offLoading()
                     this.props.redirect("/login", "", {
                         type: "success",
                         message: this.props.t('user.register.message_success'),
@@ -64,6 +67,7 @@ class Register extends React.Component {
                     if (err.reason === 'unmounted') {
                         console.log("Component has unmounted")
                     } else {
+                        this.props.offLoading()
                     }
                 })
         }
@@ -72,48 +76,72 @@ class Register extends React.Component {
     render = () => (
         <Grid container direction="column" className={this.props.classes.root} alignItems="center">
             <Grid item container xs={10} sm={8} md={6} lg={5}>
-                <Grid item xs={12} className={this.props.classes.item}>
+                <Grid item xs={12}>
                     <div className={this.props.classes.loginText}>
                         <div>{this.props.t('user.register.register_ask')}</div>
                         <Link to={PathName.user.login}>{this.props.t('user.register.back')}</Link>
                     </div>
                 </Grid>
-                <Grid item xs={12} container direction="row" className={this.props.classes.item}>
+                <Grid item xs={12} container direction="row">
                     <Grid item xs={6} style={{paddingRight: '10px'}}>
-                        <div>{this.props.t('user.register.first_name')}</div>
-                        <input type="text" className={this.props.classes.fieldInput}
-                            value={this.state.firstName} onChange={this.props.setInputState(this, "firstName")}
-                        ></input>
+                        <InputField
+                            title={this.props.t('user.register.first_name')}
+                            input={{
+                                type: "text",
+                                value: this.state.firstName,
+                                onChange: this.props.setInputState(this, "firstName"),
+                            }}
+                        ></InputField>
                     </Grid>
                     <Grid item xs={6} style={{paddingLeft: '10px'}}>
-                        <div>{this.props.t('user.register.last_name')}</div>
-                        <input type="text" className={this.props.classes.fieldInput}
-                            value={this.state.lastName} onChange={this.props.setInputState(this, "lastName")}
-                        ></input>
+                        <InputField
+                            title={this.props.t('user.register.last_name')}
+                            input={{
+                                type: "text",
+                                value: this.state.lastName,
+                                onChange: this.props.setInputState(this, "lastName"),
+                            }}
+                        ></InputField>
                     </Grid>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <div>{this.props.t('user.register.email')}</div>
-                    <input type="email" className={this.props.classes.fieldInput}
-                        value={this.state.email} onChange={this.props.setInputState(this, "email")}
-                    ></input>
+                <Grid item xs={12}>
+                    <InputField
+                        title={this.props.t('user.register.email')}
+                        input={{
+                            type: "email",
+                            value: this.state.email,
+                            onChange: this.props.setInputState(this, "email"),
+                        }}
+                    ></InputField>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <div>{this.props.t('user.register.username')}</div>
-                    <input type="text"  className={this.props.classes.fieldInput}
-                        value={this.state.username} onChange={this.props.setInputState(this, "username")}
-                    ></input>
+                <Grid item xs={12}>
+                    <InputField
+                        title={this.props.t('user.register.username')}
+                        input={{
+                            type: "text",
+                            value: this.state.username,
+                            onChange: this.props.setInputState(this, "username"),
+                        }}
+                    ></InputField>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <div>{this.props.t('user.register.password')}</div>
-                    <input type="password" className={this.props.classes.fieldInput}
-                        value={this.state.password} onChange={this.props.setInputState(this, "password")}
-                    ></input>
+                <Grid item xs={12}>
+                    <InputField
+                        title={this.props.t('user.register.password')}
+                        input={{
+                            type: "password",
+                            value: this.state.password,
+                            onChange: this.props.setInputState(this, "password"),
+                        }}
+                    ></InputField>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <input type="button" className={this.props.classes.fieldInput}
-                        defaultValue={this.props.t('user.register.submit')} onClick={this.onSubmitClick}
-                    ></input>
+                <Grid item xs={12}>
+                    <InputField
+                        input={{
+                            type: "button",
+                            defaultValue: this.props.t('user.register.submit'),
+                            onClick: this.onSubmitClick,
+                        }}
+                    ></InputField>
                 </Grid>
             </Grid>
         </Grid>

@@ -1,16 +1,30 @@
 import React from 'react'
-
 import { withStyles } from '@material-ui/core/styles'
+import { withTranslation } from 'react-i18next'
 
 const InputFieldStyles = theme => ({
     root: {
         display: "flex",
         flexDirection: "column",
+        margin: theme.spacing(1, 0),
     },
-    header: {},
+    header: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingBottom: theme.spacing(1),
+    },
     name: {},
     content: {},
-    input: {},
+    input: {
+        width: "100%",
+        height: theme.spacing(4),
+        padding: theme.spacing(0.5, 1),
+        boxSizing: "border-box",
+    },
+    buttonStyle: {
+        cursor: "pointer",
+    },
 })
 
 class InputField extends React.Component {
@@ -19,21 +33,22 @@ class InputField extends React.Component {
         this.state = {}
     }
 
-    render = () => {
-        const {name, ...otherPros} = this.props
-        return (
-            <div className={this.props.classes.root}>
+    render = () => (
+        <div className={this.props.classes.root}>
+            {this.props.title &&
                 <div className={this.props.classes.header}>
-                    <div className={this.props.classes.name}>{this.props.name}</div>
+                    <div className={this.props.classes.name}>{this.props.title}</div>
+                    <div className={this.props.classes.action}>{this.props.children}</div>
                 </div>
-                <div className={this.props.classes.content}>
-                    <input {...otherPros}
-                        className={this.props.classes.input}
-                    ></input>
-                </div>
+            }
+            
+            <div className={this.props.classes.content}>
+                <input {...this.props.input}
+                    className={`${this.props.classes.input} ${this.props.input.type === "button" ? this.props.classes.buttonStyle : ""}`}
+                ></input>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default withStyles(InputFieldStyles, { theme: true })(InputField)
+export default withTranslation()(withStyles(InputFieldStyles, { theme: true })(InputField))

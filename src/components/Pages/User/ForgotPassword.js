@@ -6,20 +6,17 @@ import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import InputField from '../../Extend/UI/InputField'
 import PathName from '../../App/PathName'
 
 const ForgotPasswordStyles = theme => ({
     root: {
         padding: theme.spacing(2, 0),
     },
-    item: {
-        padding: theme.spacing(1, 0),
-    },
-    fieldInput: {
-        width: "100%",
-        height: theme.spacing(4),
-        padding: theme.spacing(0.5, 1),
-        boxSizing: "border-box",
+    container: {
+        "& > *": {
+            padding: theme.spacing(1, 0),
+        }
     },
 })
 
@@ -37,8 +34,10 @@ class ForgotPassword extends React.Component {
         }
         if (data.email.length === 0) {
         } else {
+            this.props.onLoading()
             this.props.autoCancelRequest(this.props.resetPassword(data))
                 .then(res => {
+                    this.props.offLoading()
                     this.props.redirect("/login", "", {
                         type: "success",
                         message: this.props.t('user.forgot_password.message_success'),
@@ -48,6 +47,7 @@ class ForgotPassword extends React.Component {
                     if (err.reason === 'unmounted') {
                         console.log("Component has unmounted")
                     } else {
+                        this.props.offLoading()
                     }
                 })
             }
@@ -55,28 +55,39 @@ class ForgotPassword extends React.Component {
 
     render = () => (
         <Grid container direction="column" className={this.props.classes.root} alignItems="center">
-            <Grid item container xs={10} sm={8} md={6} lg={5}>
-                <Grid item xs={12} className={this.props.classes.item}>
+            <Grid item container xs={10} sm={8} md={6} lg={5} className={this.props.classes.container}>
+                <Grid item xs={12}>
                     <h2>{this.props.t('user.forgot_password.title')}</h2>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
+                <Grid item xs={12}>
                     <div>{this.props.t('user.forgot_password.description')}</div>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <input type="email" placeholder="Email" className={this.props.classes.fieldInput}
-                        value={this.state.email} onChange={this.props.setInputState(this, "email")}
-                    ></input>
+                <Grid item xs={12}>
+                    <InputField
+                        input={{
+                            type: "email", placeholder: "Email",
+                            value: this.state.email,
+                            onChange: this.props.setInputState(this, "email"),
+                        }}
+                    ></InputField>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <input type="button" className={this.props.classes.fieldInput}
-                        defaultValue={this.props.t('user.forgot_password.submit')}onClick={this.onSubmitClick}
-                    ></input>
+                <Grid item xs={12}>
+                    <InputField
+                        input={{
+                            type: "button",
+                            defaultValue: this.props.t('user.forgot_password.submit'),
+                            onClick: this.onSubmitClick,
+                        }}
+                    ></InputField>
                 </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
+                <Grid item xs={12}>
                     <Link to={PathName.user.login}>
-                        <input type="button" className={this.props.classes.fieldInput}
-                            defaultValue={this.props.t('user.forgot_password.back')}
-                        ></input>
+                        <InputField
+                            input={{
+                                type: "button",
+                                defaultValue: this.props.t('user.forgot_password.back'),
+                            }}
+                        ></InputField>
                     </Link>
                 </Grid>
             </Grid>
