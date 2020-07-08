@@ -59,16 +59,20 @@ class TopicInfo extends React.Component {
 
     render = () => (
         <div className={this.props.classes.root}>
-            <Typography variant="h6" className={this.props.classes.title}>
-                {this.props.topicInfo.title}
-            </Typography>
-            <Typography variant="body2" className={`${this.props.classes.description} ellipse-dot-2`}>
-                {this.props.topicInfo.description}
-            </Typography>
-            <Avatar alt={this.props.topicInfo.creator} src={this.props.topicInfo.avatar}></Avatar>
-            <Typography variant="subtitle2">
-                Created by {this.props.topicInfo.creator}
-            </Typography>
+            {this.props.topicInfo &&
+            <>
+                <Typography variant="h6" className={this.props.classes.title}>
+                    {this.props.topicInfo.title}
+                </Typography>
+                <Typography variant="body2" className={`${this.props.classes.description} ellipse-dot-2`}>
+                    {this.props.topicInfo.description}
+                </Typography>
+                <Avatar alt={this.props.topicInfo.creator} src={this.props.topicInfo.avatar}></Avatar>
+                <Typography variant="subtitle2">
+                    Created by {this.props.topicInfo.creator}
+                </Typography>
+            </>
+            }
         </div>
     )
 }

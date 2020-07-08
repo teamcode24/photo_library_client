@@ -4,14 +4,13 @@ import { withStyles } from '@material-ui/core/styles'
 
 const InputFieldStyles = theme => ({
     root: {
-        
+        display: "flex",
+        flexDirection: "column",
     },
-    name: {
-
-    },
-    input: {
-
-    },
+    header: {},
+    name: {},
+    content: {},
+    input: {},
 })
 
 class InputField extends React.Component {
