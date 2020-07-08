@@ -1,5 +1,7 @@
 import React from 'react'
+import Loading from '../Middle/Loading'
 import Redirection from '../Middle/Redirection'
+import Functions from '../Middle/Functions'
 import AutoCancelRequest from '../Middle/AutoCancelRequest'
 
 const DefaultComponent = ChildComponent => {
@@ -22,7 +24,7 @@ const DefaultComponent = ChildComponent => {
             />
         }
     }
-    return AutoCancelRequest(Redirection(DefaultComponent))
+    return AutoCancelRequest(Redirection(Loading(Functions(DefaultComponent))))
 }
 
 export default DefaultComponent

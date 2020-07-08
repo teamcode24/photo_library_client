@@ -8,12 +8,13 @@
             "forgot_password": "Forgot your password?",
             "signup_ask": "Don't have an account?",
             "signup_text": "Join",
-            "message_required": "Please enter all required fields"
+            "message_required": "Please enter all required fields",
+            "message_success": "Login successful"
         },
-        "forgotpassword": {
-            "title": "Reset Password",
-            "description": "To reset password, please provide your email",
-            "submit": "Send Reset Instructions",
+        "forgot_password": {
+            "title": "Reset your Password?",
+            "description": "Enter the email address associated with your account and we'll send you a link to reset your password",
+            "submit": "Send password reset instructions",
             "back": "Back",
             "message_success": "Your password has been reset successfully",
             "message_required": "Please enter all required fields"
@@ -26,11 +27,18 @@
             "email": "Email address",
             "username": "Username (only letters, numbers, and underscores)",
             "password": "Password (min. 6 char)",
-            "submit": "Join"
+            "submit": "Join",
+            "message_success": "Your account has been successfully registed"
         },
         "account" : {
             "name": "Name",
             "email": "Email"
+        },
+        "password": {
+            "title": "Change your password",
+            "new_password": "New password",
+            "submit": "Change password",
+            "back": "Back"
         }
     }
 }

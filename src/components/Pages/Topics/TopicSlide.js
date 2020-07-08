@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsMapping'
+import { TopicsSelector, TopicsDispatch } from '../../../services/store/Topics/TopicsProps'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import TopicCard from './TopicCard'
 
@@ -31,11 +31,16 @@ class TopicSlide extends React.Component {
         var data = {
             path: this.props.match.url
         }
+        this.props.onLoading()
         this.props.autoCancelRequest(this.props.getTopics(data))
+        .then(res => {
+            this.props.offLoading()
+        })
         .catch(err => {
             if (err.reason === 'unmounted') {
                 console.log("Component has unmounted")
             } else {
+                this.props.offLoading()
             }
         })
     }

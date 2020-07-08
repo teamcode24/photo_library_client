@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { PhotosSelector, PhotosDispatch } from '../../../services/store/Photos/PhotosMapping'
+import { PhotosSelector, PhotosDispatch } from '../../../services/store/Photos/PhotosProps'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import PhotoCard from './PhotoCard'
 
@@ -31,11 +31,16 @@ class PhotoSlide extends React.Component {
         var data = {
             path: this.props.match.url
         }
+        this.props.onLoading()
         this.props.autoCancelRequest(this.props.getPhotos(data))
+        .then(res => {
+            this.props.offLoading()
+        })
         .catch(err => {
             if (err.reason === 'unmounted') {
                 console.log("Component has unmounted")
             } else {
+                this.props.offLoading()
             }
         })
     }

@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { UserSelector, UserDispatch } from '../../services/store/User/UserMapping'
+import { UserSelector, UserDispatch } from '../../services/store/User/UserProps'
 import DefaultComponent from '../Extend/Default/DefaultComponent'
+import PathName from '../App/PathName'
 
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
@@ -41,14 +42,6 @@ class Register extends React.Component {
             username: '',
             email: '',
             password: '',
-            text: {
-                forgot: 'Forgot your password?',
-                submit: 'Join',
-                back: 'Login',
-                messageError: 'Something went wrong, please try again',
-                messageRequired: 'Please enter all required field',
-                messageSuccess: 'Your account has been successfully registed',
-            },
         }
     }
 
@@ -64,7 +57,7 @@ class Register extends React.Component {
                 .then(res => {
                     this.props.redirect("/login", "", {
                         type: "success",
-                        message: this.state.text.messageSuccess,
+                        message: this.props.t('user.register.message_success'),
                     })
                 })
                 .catch(err => {
@@ -81,7 +74,8 @@ class Register extends React.Component {
             <Grid item container xs={10} sm={8} md={6} lg={5}>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <div className={this.props.classes.loginText}>
-                        <div>{this.props.t('user.register.register_ask')}</div><Link to="/login">{this.props.t('user.register.back')}</Link>
+                        <div>{this.props.t('user.register.register_ask')}</div>
+                        <Link to={PathName.user.login}>{this.props.t('user.register.back')}</Link>
                     </div>
                 </Grid>
                 <Grid item xs={12} container direction="row" className={this.props.classes.item}>

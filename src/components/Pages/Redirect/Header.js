@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
+import PathName from '../../App/PathName'
 
 import { fade, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -12,15 +13,23 @@ import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import Divider from '@material-ui/core/Divider'
 
 const HeaderStyles = theme => ({
     root: {
         flexGrow: 1,
+        position: "sticky",
+        top: "0px:",
+        zIndex: theme.zIndex.appBar,
+    },
+    headerDummy: {
+        position: "relative",
+        width: "100%",
+        height: theme.spacing(8),
     },
     header: {
         color: theme.palette.common.black,
         backgroundColor: theme.palette.common.white,
-
     },
     search: {
         position: 'relative',
@@ -55,7 +64,22 @@ const HeaderStyles = theme => ({
     actionButton: {
         minWidth: '100px',
         textTransform: 'capitalize',
-        marginLeft: theme.spacing(2),
+        "&:not(:last-child)": {
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+        },
+        "&:last-child": {
+            marginLeft: theme.spacing(1),
+        }
+    },
+    uploadButton: {
+        border: "1px solid #ccc",
+    },
+    divider: {
+        marginTop: theme.spacing(2),
+        marginLeft: theme.spacing(1),
+        marginBottom: theme.spacing(2),
+        marginRight: theme.spacing(1),
     },
     joinButton: {
         color: theme.palette.common.white,
@@ -74,7 +98,8 @@ class Header extends React.Component {
 
     render = () => (
         <div className={this.props.classes.root}>
-            <AppBar position="static" className={this.props.classes.header}>
+            <div className={this.props.classes.headerDummy}></div>
+            <AppBar position="fixed" className={this.props.classes.header}>
                 <Toolbar>
                     <IconButton edge="start" className={this.props.classes.menuButton} color="inherit">
                         <MenuIcon />
@@ -90,25 +115,32 @@ class Header extends React.Component {
                             }}
                         />
                     </div>
-                    <Button component={RouterLink} to="/t" color="inherit" className={this.props.classes.actionButton}>
+
+                    <Button component={RouterLink} to={PathName.topic.root} color="inherit" className={this.props.classes.actionButton}>
                         Topics
                     </Button>
-                    {!this.props.isAuthenticated && (
+                    <Button component={RouterLink} to={PathName.user.join} color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.uploadButton}`}>
+                        Submit a photo
+                    </Button>
+                    <Divider orientation="vertical" flexItem className={this.props.classes.divider} />
+
+                    {!this.props.isAuthenticated() && (
                         <>
-                        <Button component={RouterLink} to="/login"color="inherit" className={this.props.classes.actionButton}>
+                        <Button component={RouterLink} to={PathName.user.login} color="inherit" className={this.props.classes.actionButton}>
                             Login
                         </Button>
-                        <Button component={RouterLink} to="/join" color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.joinButton}`}>
+                        <Button component={RouterLink} to={PathName.user.join} color="inherit" className={`${this.props.classes.actionButton} ${this.props.classes.joinButton}`}>
                             Join free
                         </Button>
                         </>
                     )}
-                    {this.props.isAuthenticated && (
+
+                    {this.props.isAuthenticated() && (
                         <>
-                        <Button component={RouterLink} to="/" color="inherit" className={this.props.classes.iconButton}>
+                        <Button component={RouterLink} to={PathName.default.root} color="inherit" className={this.props.classes.iconButton}>
                             <NotificationsIcon />
                         </Button>
-                        <Button component={RouterLink} to="/" color="inherit" className={this.props.classes.iconButton}>
+                        <Button component={RouterLink} to={PathName.user.account} color="inherit" className={this.props.classes.iconButton}>
                             <AccountCircleIcon />
                         </Button>
                         </>

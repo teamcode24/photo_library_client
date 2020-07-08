@@ -1,13 +1,13 @@
 export const TopicsActionTypes = {
     GET_TOPICS_LIST: "GET_TOPICS_LIST",
     GET_TOPICS: "GET_TOPICS",
-    GET_TOPIC: "GET_TOPIC",
+    GET_TOPIC_INFO: "GET_TOPIC_INFO",
 }
 
 const initialTopicsState = {
     topicsList: [],
     topics: [],
-    topic: {}
+    topicInfo: {}
 }
 
 export const TopicsReducer = (state = initialTopicsState, action) => {
@@ -19,11 +19,11 @@ export const TopicsReducer = (state = initialTopicsState, action) => {
                 topics: topics1,
             }
             return data1
-        case TopicsActionTypes.GET_TOPIC:
+        case TopicsActionTypes.GET_TOPIC_INFO:
             var topic1 = action.payload.data.topics[0]
             var data2 = {
                 ...state,
-                topic: topic1,
+                topicInfo: topic1,
             }
             return data2
         case TopicsActionTypes.GET_TOPICS_LIST:

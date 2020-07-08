@@ -6,7 +6,7 @@ export const AuthentActionTypes = {
 }
 
 const initialAuthentState = {
-    isAuthenticated: false,
+    authenticated: false,
 }
 
 export const AuthentReducer = (state = initialAuthentState, action) => {
@@ -16,14 +16,14 @@ export const AuthentReducer = (state = initialAuthentState, action) => {
             Token.save(token)
             var data = {
                 ...state,
-                isAuthenticated: true,
+                authenticated: true,
             }
             return data
         case AuthentActionTypes.LOGOUT:
             Token.remove()
             return {
                 ...state,
-                isAuthenticated: false,
+                authenticated: false,
             }
         default:
             return state

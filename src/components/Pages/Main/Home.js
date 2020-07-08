@@ -1,8 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import TopicsLayout from './Layout/TopicsLayout'
 import PhotosLayout from './Layout/PhotosLayout'
+import PathName from '../../App/PathName'
 
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import Topics from '../Redirect/Topics'
@@ -26,14 +26,14 @@ class Home extends React.Component {
         <div className={this.props.classes.root}>
             <Topics></Topics>
             <Switch>
-                <Route exact path="/t" component={TopicsLayout}></Route>
-                <Route exact path="/t/*" component={TopicsLayout}></Route>
-                <Route exact path="/photos" component={PhotosLayout}></Route>
-                <Route path="/*" component={PhotosLayout}></Route>
+                <Route exact path={PathName.topic.root} component={TopicsLayout}></Route>
+                <Route exact path={PathName.topic.any} component={TopicsLayout}></Route>
+                <Route exact path={PathName.photo.photos} component={PhotosLayout}></Route>
+                <Route path={PathName.default.any} component={PhotosLayout}></Route>
             </Switch>
             <Footer></Footer>
         </div>
     )
 }
 
-export default connect(null, null)(DefaultComponent(withStyles(HomeStyles, { theme: true })(Home)))
+export default DefaultComponent(withStyles(HomeStyles, { theme: true })(Home))
