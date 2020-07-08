@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { UserSelector, UserDispatch } from '../../services/store/User/UserProps'
-import DefaultComponent from '../Extend/Default/DefaultComponent'
+import { UserSelector, UserDispatch } from '../../../services/store/User/UserProps'
+import AuthComponent from '../../Extend/Default/AuthComponent'
+import PathName from '../../App/PathName'
+
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import PathName from '../App/PathName'
 
 const ForgotPasswordStyles = theme => ({
     root: {
@@ -23,59 +24,56 @@ const ForgotPasswordStyles = theme => ({
     },
 })
 
-class ForgotPassword extends React.Component {
+class Password extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            email: '',
+            newPassword: '',
         }
     }
 
     onSubmitClick = e => {
         var data = {
-            email: this.state.email,
+            newPassword: this.state.newPassword,
         }
         if (data.email.length === 0) {
         } else {
-            this.props.autoCancelRequest(this.props.resetPassword(data))
-                .then(res => {
-                    this.props.redirect("/login", "", {
-                        type: "success",
-                        message: this.props.t('user.forgot_password.message_success'),
-                    })
-                })
-                .catch(err => {
-                    if (err.reason === 'unmounted') {
-                        console.log("Component has unmounted")
-                    } else {
-                    }
-                })
-            }
+            // this.props.autoCancelRequest(this.props.resetPassword(data))
+            //     .then(res => {
+            //         this.props.redirect("/login", "", {
+            //             type: "success",
+            //             message: this.props.t('user.forgot_password.message_success'),
+            //         })
+            //     })
+            //     .catch(err => {
+            //         if (err.reason === 'unmounted') {
+            //             console.log("Component has unmounted")
+            //         } else {
+            //         }
+            //     })
+        }
     }
 
     render = () => (
         <Grid container direction="column" className={this.props.classes.root} alignItems="center">
             <Grid item container xs={10} sm={8} md={6} lg={5}>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <h2>{this.props.t('user.forgot_password.title')}</h2>
+                    <h2>{this.props.t('user.password.title')}</h2>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
-                    <div>{this.props.t('user.forgot_password.description')}</div>
-                </Grid>
-                <Grid item xs={12} className={this.props.classes.item}>
-                    <input type="email" placeholder="Email" className={this.props.classes.fieldInput}
-                        value={this.state.email} onChange={this.props.setInputState(this, "email")}
+                    <input type="password" placeholder="New Password" className={this.props.classes.fieldInput}
+                        value={this.state.newPassword} onChange={this.props.setInputState(this, "newPassword")}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <input type="button" className={this.props.classes.fieldInput}
-                        defaultValue={this.props.t('user.forgot_password.submit')}onClick={this.onSubmitClick}
+                        defaultValue={this.props.t('user.password.submit')} onClick={this.onSubmitClick}
                     ></input>
                 </Grid>
                 <Grid item xs={12} className={this.props.classes.item}>
                     <Link to={PathName.user.login}>
                         <input type="button" className={this.props.classes.fieldInput}
-                            defaultValue={this.props.t('user.forgot_password.back')}
+                            defaultValue={this.props.t('user.password.back')}
                         ></input>
                     </Link>
                 </Grid>
@@ -84,4 +82,4 @@ class ForgotPassword extends React.Component {
     )
 }
 
-export default connect(UserSelector, UserDispatch)(DefaultComponent(withTranslation()(withStyles(ForgotPasswordStyles, { theme: true })(ForgotPassword))))
+export default connect(UserSelector, UserDispatch)(AuthComponent(withTranslation()(withStyles(ForgotPasswordStyles, { theme: true })(Password))))

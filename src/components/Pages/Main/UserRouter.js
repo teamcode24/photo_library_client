@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Login from '../../User/Login'
-import ForgotPassword from '../../User/ForgotPassword'
-import Register from '../../User/Register'
-import Account from '../../User/Account'
+import Login from '../User/Login'
+import ForgotPassword from '../User/ForgotPassword'
+import Register from '../User/Register'
+import Account from '../User/Account'
 import PathName from '../../App/PathName'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 

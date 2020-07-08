@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { UserSelector, UserDispatch } from '../../services/store/User/UserProps'
-import DefaultComponent from '../Extend/Default/DefaultComponent'
-import PathName from '../App/PathName'
+import { UserSelector, UserDispatch } from '../../../services/store/User/UserProps'
+import DefaultComponent from '../../Extend/Default/DefaultComponent'
+import PathName from '../../App/PathName'
 
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'

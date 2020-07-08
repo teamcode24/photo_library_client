@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from '../Pages/Redirect/Header'
-import Home from '../Pages/Main/Home'
-import User from '../Pages/Main/User'
+import HomeRouter from '../Pages/Main/HomeRouter'
+import UserRouter from '../Pages/Main/UserRouter'
 import PathName from './PathName'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -27,9 +27,9 @@ class App extends React.Component {
                         <Header></Header>
                         <Switch>
                             {/* <Route exact path="/s/:search" component={Home}></Route> */}
-                            <Route exact path={PathName.user.root} component={User}></Route>
-                            <Route path={PathName.user.any} component={User}></Route>
-                            <Route path={PathName.default.any} component={Home}></Route>
+                            <Route exact path={PathName.user.root} component={UserRouter}></Route>
+                            <Route path={PathName.user.any} component={UserRouter}></Route>
+                            <Route path={PathName.default.any} component={HomeRouter}></Route>
                         </Switch>
                     </BrowserRouter>
                 </PersistGate>
