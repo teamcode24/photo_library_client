@@ -2,7 +2,7 @@ import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 
-const AccountUpdatedStyles = theme => ({
+const MessageStyles = theme => ({
     root: {
         position: "sticky",
         top: "0px",
@@ -14,7 +14,7 @@ const AccountUpdatedStyles = theme => ({
     },
 })
 
-class AccountUpdated extends React.Component {
+class Message extends React.Component {
     constructor (props) {
         super(props)
         this.state = {}
@@ -28,4 +28,4 @@ class AccountUpdated extends React.Component {
     )
 }
 
-export default withStyles(AccountUpdatedStyles, { theme: true })(AccountUpdated)
+export default withStyles(MessageStyles, { theme: true })(Message)

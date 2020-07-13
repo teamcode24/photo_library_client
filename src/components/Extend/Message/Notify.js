@@ -2,7 +2,7 @@ import React from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 
-const VerifyEmailStyles = theme => ({
+const NotifyStyles = theme => ({
     root: {
         position: "sticky",
         top: "0px",
@@ -14,7 +14,7 @@ const VerifyEmailStyles = theme => ({
     },
 })
 
-class VerifyEmail extends React.Component {
+class Notify extends React.Component {
     constructor (props) {
         super(props)
         this.state = {}
@@ -27,4 +27,4 @@ class VerifyEmail extends React.Component {
     )
 }
 
-export default withStyles(VerifyEmailStyles, { theme: true })(VerifyEmail)
+export default withStyles(NotifyStyles, { theme: true })(Notify)
