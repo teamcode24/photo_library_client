@@ -74,6 +74,7 @@ const HeaderStyles = theme => ({
     },
     uploadButton: {
         border: "1px solid #ccc",
+        minWidth: "150px",
     },
     divider: {
         marginTop: theme.spacing(2),

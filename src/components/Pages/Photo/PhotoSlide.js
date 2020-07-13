@@ -8,7 +8,9 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 
 const PhotoSlideStyles = theme => ({
-    root: {},
+    root: {
+        margin: theme.spacing(3, 0),
+    },
 })
 
 class PhotoSlide extends React.Component {

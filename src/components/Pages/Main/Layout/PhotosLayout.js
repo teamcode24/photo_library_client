@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import Carousel from '../../../Extend/UI/Carousel'
 import PhotoSlide from '../../Photo/PhotoSlide'
 
 class PhotosLayout extends React.Component {
@@ -9,9 +10,10 @@ class PhotosLayout extends React.Component {
     }
 
     render = () => (
-        <div>
+        <>
+            <Route exact path="/*" component={Carousel}></Route>
             <Route exact path="/*" component={PhotoSlide}></Route>
-        </div>
+        </>
     )
 }
 

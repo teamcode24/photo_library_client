@@ -11,11 +11,11 @@ class TopicsLayout extends React.Component {
     }
 
     render = () => (
-        <div>
+        <>
             <Route exact path="/t" component={TopicSlide}></Route>
             <Route exact path="/t/*" component={TopicInfo}></Route>
             <Route exact path="/t/*" component={PhotoSlide}></Route>
-        </div>
+        </>
     )
 }
 
