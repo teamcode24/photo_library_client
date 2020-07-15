@@ -6,13 +6,15 @@ import { withStyles } from '@material-ui/core/styles'
 
 const NotifyStyles = theme => ({
     root: {
-        position: "sticky",
-        top: "0px",
+        height: theme.spacing(3),
         padding: theme.spacing(1),
         color: theme.palette.common.white,
         backgroundColor: theme.palette.common.black,
         zIndex: theme.zIndex.snackbar,
         textAlign: "center",
+    },
+    content: {
+
     },
 })
 
@@ -26,7 +28,9 @@ class Notify extends React.Component {
         <>
             {this.props.notify.show === true &&
                 <div className={this.props.classes.root}>
-                    <div>Your email: ... has not been confirmed</div>
+                    <div className={this.props.classes.content}>
+                        <div>Your email: ... has not been confirmed</div>
+                    </div>
                 </div>
             }
         </>

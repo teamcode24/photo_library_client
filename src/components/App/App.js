@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Message from '../Extend/Message/Message'
-import Notify from '../Extend/Message/Notify'
 import Header from '../Pages/Redirect/Header'
 import HomeRouter from '../Pages/Main/HomeRouter'
 import UserRouter from '../Pages/Main/UserRouter'
@@ -34,7 +33,6 @@ class App extends React.Component {
                 <PersistGate persistor={Persistor} loading={null}>
                     <BrowserRouter>
                         <Message></Message>
-                        <Notify></Notify>
                         <Header></Header>
                         <Switch>
                             {/* <Route exact path="/s/:search" component={Home}></Route> */}
