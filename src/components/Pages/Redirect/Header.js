@@ -1,20 +1,20 @@
-import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
-import DefaultComponent from '../../Extend/Default/DefaultComponent'
-import PathName from '../../App/PathName'
-import Notify from '../../Extend/Message/Notify'
+import React from "react"
+import { Link as RouterLink } from "react-router-dom"
+import DefaultComponent from "../../Extend/Default/DefaultComponent"
+import PathName from "../../App/PathName"
+import Notify from "../../Extend/Message/Notify"
 
-import { fade, withStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import InputBase from '@material-ui/core/InputBase'
-import MenuIcon from '@material-ui/icons/Menu'
-import SearchIcon from '@material-ui/icons/Search'
-import NotificationsIcon from '@material-ui/icons/Notifications'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import Divider from '@material-ui/core/Divider'
+import { fade, withStyles } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import Button from "@material-ui/core/Button"
+import IconButton from "@material-ui/core/IconButton"
+import InputBase from "@material-ui/core/InputBase"
+import MenuIcon from "@material-ui/icons/Menu"
+import SearchIcon from "@material-ui/icons/Search"
+import NotificationsIcon from "@material-ui/icons/Notifications"
+import AccountCircleIcon from "@material-ui/icons/AccountCircle"
+import Divider from "@material-ui/core/Divider"
 
 const HeaderStyles = theme => ({
     root: {
@@ -30,27 +30,27 @@ const HeaderStyles = theme => ({
     headerDummy: {
         position: "relative",
         width: "100%",
-        height: theme.spacing(11),
+        height: theme.spacing(8),
     },
     search: {
-        position: 'relative',
+        position: "relative",
         flexGrow: 1,
         borderRadius: theme.shape.borderRadius,
         backgroundColor: theme.palette.common.white,
-        '&:hover': {
+        "&:hover": {
             backgroundColor: fade(theme.palette.common.black, 0.05),
         }
     },
     searchIcon: {
-        position: 'absolute',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
+        position: "absolute",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
         padding: theme.spacing(0, 2),
     },
     searchInputRoot: {
-        color: 'inherit',
-        width: '100%',
+        color: "inherit",
+        width: "100%",
     },
     searchInputInput: {
         padding: theme.spacing(1, 1, 1, 0),
@@ -63,8 +63,8 @@ const HeaderStyles = theme => ({
         minWidth: "50px",
     },
     actionButton: {
-        minWidth: '100px',
-        textTransform: 'capitalize',
+        minWidth: "100px",
+        textTransform: "capitalize",
         "&:not(:last-child)": {
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
@@ -85,9 +85,9 @@ const HeaderStyles = theme => ({
     },
     joinButton: {
         color: theme.palette.common.white,
-        backgroundColor: '#37a866',
-        '&:hover': {
-            backgroundColor: '#37a866',
+        backgroundColor: "#37a866",
+        "&:hover": {
+            backgroundColor: "#37a866",
         },
     },
 })

@@ -12,6 +12,7 @@ const NotifyStyles = theme => ({
         backgroundColor: theme.palette.common.black,
         zIndex: theme.zIndex.snackbar,
         textAlign: "center",
+        position: "sticky",
     },
     content: {
 
