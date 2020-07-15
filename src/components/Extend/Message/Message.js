@@ -26,8 +26,10 @@ class Message extends React.Component {
         <>
         {this.props.message.show === true &&
             <div className={this.props.classes.root}>
-                <div>Your account was successfully updated, but we need to verify your new email address.</div>
-                <div>Please check your email and follow the link to confirm your new address.</div>
+                <div className={this.props.classes.content}>
+                    <div>Your account was successfully updated, but we need to verify your new email address.</div>
+                    <div>Please check your email and follow the link to confirm your new address.</div>
+                </div>
             </div>
         }
         </>

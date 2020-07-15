@@ -22,8 +22,12 @@ class App extends React.Component {
 
     componentDidMount() {
         GlobalDispatch.notify.show({
-            content: "example app notify 1",
+            content: "example app message 1",
         })
+        
+        setTimeout(() => {
+            GlobalDispatch.notify.hide()
+        }, 2000)
     }
 
     render = () => (

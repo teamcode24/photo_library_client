@@ -30,7 +30,7 @@ class Notify extends React.Component {
             {this.props.notify.show === true &&
                 <div className={this.props.classes.root}>
                     <div className={this.props.classes.content}>
-                        <div>Your email: ... has not been confirmed</div>
+                        <div>{this.props.notify.content}</div>
                     </div>
                 </div>
             }

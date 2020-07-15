@@ -101,8 +101,8 @@ class Header extends React.Component {
     render = () => (
         <div className={this.props.classes.root}>
             <div className={this.props.classes.headerDummy}></div>
-            <AppBar position="fixed" className={this.props.classes.header}>
-                <Notify></Notify>
+            <AppBar position="fixed" className={this.props.classes.header} ref={this.refAppbar}>
+                <Notify />
                 <Toolbar>
                     <IconButton edge="start" className={this.props.classes.menuButton} color="inherit">
                         <MenuIcon />
