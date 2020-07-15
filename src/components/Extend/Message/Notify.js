@@ -1,5 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
+import { NotifySelector } from '../../../services/store/Message/NotifyProps'
 import { withStyles } from '@material-ui/core/styles'
 
 const NotifyStyles = theme => ({
@@ -21,10 +23,14 @@ class Notify extends React.Component {
     }
 
     render = () => (
-        <div className={this.props.classes.root}>
-            <div>Your email: ... has not been confirmed</div>
-        </div>
+        <>
+            {this.props.notify.show === true &&
+                <div className={this.props.classes.root}>
+                    <div>Your email: ... has not been confirmed</div>
+                </div>
+            }
+        </>
     )
 }
 
-export default withStyles(NotifyStyles, { theme: true })(Notify)
+export default connect(NotifySelector)(withStyles(NotifyStyles, { theme: true })(Notify))

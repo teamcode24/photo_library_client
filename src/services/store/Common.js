@@ -3,11 +3,11 @@ import { Token } from './Token'
 export const SendOff = (dispatch, ...types) => {
     return function (data) {
         for (var i = 0; i < types.length; i++) {
-            var type = types[i]
-            dispatch({
-                type: type,
+            var action = {
+                type: types[i],
                 payload: data,
-            })
+            }
+            dispatch(action)
         }
     }
 }

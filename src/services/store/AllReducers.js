@@ -5,18 +5,24 @@ import { UserReducer } from './User/UserReducer'
 import { PhotosReducer } from './Photos/PhotosReducer'
 import { TopicsReducer } from './Topics/TopicsReducer'
 import { MessageReducer } from './Message/MessageReducer'
+import { NotifyReducer } from './Message/NotifyReducer'
 
-const HomeReducer = {
+const Home = {
     photo: PhotosReducer,
     topic: TopicsReducer,
+}
+
+const Message = {
+    message: MessageReducer,
+    notify: NotifyReducer,
 }
 
 const AllReducer = {
     authent: AuthentReducer,
     account: AccountReducer,
     user: UserReducer,
-    home: combineReducers(HomeReducer),
-    message: MessageReducer,
+    home: combineReducers(Home),
+    message: combineReducers(Message),
 }
 
 export default combineReducers(AllReducer)

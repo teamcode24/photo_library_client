@@ -1,23 +1,23 @@
-export const MessageActionTypes = {
-    DISPLAY_MESSAGE: "DISPLAY_MESSAGE",
-    HIDE_MESSAGE: "HIDE_MESSAGE",
+export const NotifyActionTypes = {
+    DISPLAY_NOTIFY: "DISPLAY_NOTIFY",
+    HIDE_NOTIFY: "HIDE_NOTIFY",
 }
 
-const initialMessageState = {
+const initialNotifyState = {
     show: false,
     content: "",
 }
 
-export const MessageReducer = (state = initialMessageState, action) => {
+export const NotifyReducer = (state = initialNotifyState, action) => {
     switch (action.type) {
-        case MessageActionTypes.DISPLAY_MESSAGE:
+        case NotifyActionTypes.DISPLAY_NOTIFY:
             var data1 = {
                 ...state,
                 show: true,
                 content: action.payload.content,
             }
             return data1
-        case MessageActionTypes.HIDE_MESSAGE:
+        case NotifyActionTypes.HIDE_NOTIFY:
             var data2 = {
                 ...state,
                 show: false,
