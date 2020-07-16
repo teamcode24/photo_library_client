@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link as RouterLink } from "react-router-dom"
 import GlobalDispatch from '../../../services/store/GlobalDispatch'
-import Typography from '@material-ui/core/Typography'
 
 import { NotifySelector } from '../../../services/store/Message/NotifyProps'
 import { withStyles } from '@material-ui/core/styles'
@@ -31,11 +30,15 @@ const NotifyStyles = theme => ({
         alignItems: "center",
         cursor: "pointer",
     },
-    link: {
+    text_link: {
         color: "#ccc",
+        fontStyle: "italic",
     },
     text_bold: {
         fontWeight: "bold",
+    },
+    text_italic: {
+        fontStyle: "italic",
     },
 })
 
@@ -51,11 +54,11 @@ class Notify extends React.Component {
 
     loadItems = data => {
         var content = data.content
-        var items = data.items
-        var itemLen = data.items?.length ?? 0
+        var items = data.items ?? []
         var result = []
-        for (var i=0; i<itemLen; i++) {
+        for (var i=0; i<items.length; i++) {
             var item = items[i]
+            var itemClasses = item.classes ?? []
             if (content.indexOf(item.name) !== -1) {
                 var cuts = content.split(item.name)
                 if (cuts[0].length > 0) {
@@ -64,13 +67,15 @@ class Notify extends React.Component {
                     )
                 }
                 if (item.type === 'link') {
+                    itemClasses.push("link")
+                    var linkClasses = itemClasses.map(x => this.props.classes['text_' + x]).join(" ")
                     result.push(
-                        <Link key={item.name} className={this.props.classes.link} component={RouterLink} to={item.link}>{item.text}</Link>
+                        <Link key={item.name} className={linkClasses} component={RouterLink} to={item.link}>{item.text}</Link>
                     )
                 } else {
-                    var itemClasses = item.classes?.map(x => this.props.classes['text_' + x]) ?? ""
+                    var textClasses = itemClasses.map(x => this.props.classes['text_' + x]).join(" ")
                     result.push(
-                        <span key={'span1' + i} className={itemClasses}>{item.text}</span>
+                        <span key={'span1' + i} className={textClasses}>{item.text}</span>
                     )
                 }
             }
