@@ -23,6 +23,9 @@ const MessageStyles = theme => ({
         position: "absolute",
         top: "0px",
         right: "0px",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
         cursor: "pointer",
     },
 })
@@ -41,10 +44,11 @@ class Message extends React.Component {
         <>
         {this.props.message.show === true &&
             <div className={this.props.classes.root}>
-                <div>Your account was successfully updated, but we need to verify your new email address.</div>
-                <div>Please check your email and follow the link to confirm your new address.</div>
+                <div className={this.props.classes.content}>
+                <div>{this.props.message.content}</div>
                 <div className={this.props.classes.close}>
-                    <CloseIcon onClick={this.onCloseClick} />
+                        <CloseIcon onClick={this.onCloseClick} />
+                    </div>
                 </div>
             </div>
         }

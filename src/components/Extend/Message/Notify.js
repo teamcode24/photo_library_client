@@ -23,6 +23,9 @@ const NotifyStyles = theme => ({
         position: "absolute",
         top: "0px",
         right: "0px",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
         cursor: "pointer",
     },
 })
