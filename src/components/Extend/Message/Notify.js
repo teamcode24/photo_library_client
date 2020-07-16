@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import GlobalDispatch from '../../../services/store/GlobalDispatch'
 
 import { NotifySelector } from '../../../services/store/Message/NotifyProps'
 import { withStyles } from '@material-ui/core/styles'
+import CloseIcon from '@material-ui/icons/Close'
 
 const NotifyStyles = theme => ({
     root: {
@@ -15,7 +17,13 @@ const NotifyStyles = theme => ({
         position: "sticky",
     },
     content: {
-
+        position: "relative",
+    },
+    close: {
+        position: "absolute",
+        top: "0px",
+        right: "0px",
+        cursor: "pointer",
     },
 })
 
@@ -25,12 +33,19 @@ class Notify extends React.Component {
         this.state = {}
     }
 
+    onCloseClick = () => {
+        GlobalDispatch.notify.hide()
+    }
+
     render = () => (
         <>
             {this.props.notify.show === true &&
                 <div className={this.props.classes.root}>
                     <div className={this.props.classes.content}>
                         <div>{this.props.notify.content}</div>
+                        <div className={this.props.classes.close}>
+                            <CloseIcon onClick={this.onCloseClick} />
+                        </div>
                     </div>
                 </div>
             }

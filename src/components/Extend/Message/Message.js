@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import GlobalDispatch from '../../../services/store/GlobalDispatch'
 
 import { MessageSelector } from '../../../services/store/Message/MessageProps'
 import { withStyles } from '@material-ui/core/styles'
+import CloseIcon from '@material-ui/icons/Close'
 
 const MessageStyles = theme => ({
     root: {
@@ -14,6 +16,15 @@ const MessageStyles = theme => ({
         zIndex: theme.zIndex.snackbar,
         textAlign: "center",
     },
+    content: {
+        position: "relative",
+    },
+    close: {
+        position: "absolute",
+        top: "0px",
+        right: "0px",
+        cursor: "pointer",
+    },
 })
 
 class Message extends React.Component {
@@ -22,13 +33,18 @@ class Message extends React.Component {
         this.state = {}
     }
 
+    onCloseClick = () => {
+        GlobalDispatch.message.hide()
+    }
+
     render = () => (
         <>
         {this.props.message.show === true &&
             <div className={this.props.classes.root}>
-                <div className={this.props.classes.content}>
-                    <div>Your account was successfully updated, but we need to verify your new email address.</div>
-                    <div>Please check your email and follow the link to confirm your new address.</div>
+                <div>Your account was successfully updated, but we need to verify your new email address.</div>
+                <div>Please check your email and follow the link to confirm your new address.</div>
+                <div className={this.props.classes.close}>
+                    <CloseIcon onClick={this.onCloseClick} />
                 </div>
             </div>
         }

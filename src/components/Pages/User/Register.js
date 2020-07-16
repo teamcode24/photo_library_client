@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { UserSelector, UserDispatch } from '../../../services/store/User/UserProps'
 import DefaultComponent from '../../Extend/Default/DefaultComponent'
 import PathName from '../../App/PathName'
+import GlobalDispatch from '../../../services/store/GlobalDispatch'
 
 import { withTranslation } from 'react-i18next'
 import { withStyles } from '@material-ui/core/styles'
@@ -57,11 +58,17 @@ class Register extends React.Component {
             this.props.onLoading()
             this.props.autoCancelRequest(this.props.createUser(data))
                 .then(res => {
-                    this.props.offLoading()
-                    this.props.redirect("/login", "", {
-                        type: "success",
-                        message: this.props.t('user.register.message_success'),
+                    GlobalDispatch.notify.show({
+                        content: res.data.message
                     })
+                    if (res.data.success === true) {
+                        this.props.redirect("/login", "", {
+                            type: "success",
+                            message: this.props.t('user.register.message_success'),
+                        })
+                    }
+                    this.props.offLoading()
+                    
                 })
                 .catch(err => {
                     if (err.reason === 'unmounted') {
