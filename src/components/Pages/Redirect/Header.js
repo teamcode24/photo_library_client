@@ -2,7 +2,6 @@ import React from "react"
 import { Link as RouterLink } from "react-router-dom"
 import DefaultComponent from "../../Extend/Default/DefaultComponent"
 import PathName from "../../App/PathName"
-import Notify from "../../Extend/Message/Notify"
 
 import { fade, withStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
@@ -26,11 +25,6 @@ const HeaderStyles = theme => ({
     header: {
         color: theme.palette.common.black,
         backgroundColor: theme.palette.common.white,
-    },
-    headerDummy: {
-        position: "relative",
-        width: "100%",
-        height: theme.spacing(8),
     },
     search: {
         position: "relative",
@@ -100,9 +94,7 @@ class Header extends React.Component {
 
     render = () => (
         <div className={this.props.classes.root}>
-            <div className={this.props.classes.headerDummy}></div>
-            <AppBar position="fixed" className={this.props.classes.header} ref={this.refAppbar}>
-                <Notify />
+            <AppBar position="sticky" className={this.props.classes.header} ref={this.refAppbar}>
                 <Toolbar>
                     <IconButton edge="start" className={this.props.classes.menuButton} color="inherit">
                         <MenuIcon />

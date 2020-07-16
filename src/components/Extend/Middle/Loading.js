@@ -13,7 +13,7 @@ const LoadingStyles = theme => ({
         width: "100%",
         height: "100%",
         backgroundColor: fade(theme.palette.common.white, 0.5),
-        zIndex: theme.zIndex.modal,
+        zIndex: theme.zIndex.main,
     },
     loading: {
         position: "absolute",
@@ -21,7 +21,7 @@ const LoadingStyles = theme => ({
         left: "50%",
         marginLeft: "-20px",
         marginTop: "-20px",
-        zIndex: theme.zIndex.modal,
+        zIndex: theme.zIndex.main,
     },
 })
 
