@@ -6,6 +6,7 @@ export const NotifyActionTypes = {
 const initialNotifyState = {
     show: false,
     content: "",
+    items: [],
 }
 
 export const NotifyReducer = (state = initialNotifyState, action) => {
@@ -13,15 +14,15 @@ export const NotifyReducer = (state = initialNotifyState, action) => {
         case NotifyActionTypes.DISPLAY_NOTIFY:
             var data1 = {
                 ...state,
+                ...action.payload,
                 show: true,
-                content: action.payload.content,
             }
             return data1
         case NotifyActionTypes.HIDE_NOTIFY:
             var data2 = {
                 ...state,
+                ...action.payload,
                 show: false,
-                content: "",
             }
             return data2
         default:

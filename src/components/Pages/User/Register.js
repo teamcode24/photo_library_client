@@ -58,21 +58,41 @@ class Register extends React.Component {
             this.props.onLoading()
             this.props.autoCancelRequest(this.props.createUser(data))
                 .then(res => {
+                    console.log(res)
                     if (res.data.success === false) {
                         GlobalDispatch.message.show({
                             content: res.data.message
                         })
+                        this.props.offLoading()
                     } else {
                         GlobalDispatch.notify.show({
                             content: res.data.message,
+                            items: [
+                                {
+                                    name: "__email__",
+                                    type: "text",
+                                    classes: ["bold"],
+                                    text: res.data.email,
+                                },
+                                {
+                                    name: "__change_email__",
+                                    type: "link",
+                                    text: "Change email",
+                                    link: PathName.user.forgot_password,
+                                },
+                                {
+                                    name: "__resend_confirmation__",
+                                    type: "link",
+                                    text: "Resend confirmation",
+                                    link: PathName.user.account,
+                                },
+                            ]
                         })
                         this.props.redirect(PathName.user.login, "", {
                             type: "success",
                             message: this.props.t('user.register.message_success'),
                         })
                     }
-                    this.props.offLoading()
-                    
                 })
                 .catch(err => {
                     if (err.reason === 'unmounted') {

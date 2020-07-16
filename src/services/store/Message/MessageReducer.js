@@ -6,6 +6,7 @@ export const MessageActionTypes = {
 const initialMessageState = {
     show: false,
     content: "",
+    items: [],
 }
 
 export const MessageReducer = (state = initialMessageState, action) => {
@@ -13,15 +14,15 @@ export const MessageReducer = (state = initialMessageState, action) => {
         case MessageActionTypes.DISPLAY_MESSAGE:
             var data1 = {
                 ...state,
+                ...action.payload,
                 show: true,
-                content: action.payload.content,
             }
             return data1
         case MessageActionTypes.HIDE_MESSAGE:
             var data2 = {
                 ...state,
+                ...action.payload,
                 show: false,
-                content: "",
             }
             return data2
         default:

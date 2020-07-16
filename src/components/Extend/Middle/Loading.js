@@ -37,7 +37,7 @@ const Loading = ChildComponent => {
         onLoading = () => { this.setState({ isLoading: true }) }
         offLoading = () => { this.setState({ isLoading: false }) }
         
-        render = () => {
+        render () {
             const {classes, ...otherProps} = this.props
             return (
                 <div className={classes.root}>

@@ -6,12 +6,9 @@ import { NotifyActionTypes } from './Message/NotifyReducer'
 const GlobalDispatch = {
     message: {
         show: input => {
-            var data = {
-                content: input.content,
-            }
             SendOff(Store.dispatch,
                 MessageActionTypes.DISPLAY_MESSAGE
-            )(data)
+            )(input)
         },
         hide: input => {
             SendOff(Store.dispatch,
@@ -21,12 +18,9 @@ const GlobalDispatch = {
     },
     notify: {
         show: input => {
-            var data = {
-                content: input.content,
-            }
             SendOff(Store.dispatch,
                 NotifyActionTypes.DISPLAY_NOTIFY
-            )(data)
+            )(input)
         },
         hide: input => {
             SendOff(Store.dispatch,

@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link as RouterLink } from "react-router-dom"
 import GlobalDispatch from '../../../services/store/GlobalDispatch'
+import Typography from '@material-ui/core/Typography'
 
 import { NotifySelector } from '../../../services/store/Message/NotifyProps'
 import { withStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
+import Link from '@material-ui/core/Link'
 
 const NotifyStyles = theme => ({
     root: {
@@ -28,6 +31,12 @@ const NotifyStyles = theme => ({
         alignItems: "center",
         cursor: "pointer",
     },
+    link: {
+        color: "#ccc",
+    },
+    text_bold: {
+        fontWeight: "bold",
+    },
 })
 
 class Notify extends React.Component {
@@ -40,12 +49,43 @@ class Notify extends React.Component {
         GlobalDispatch.notify.hide()
     }
 
+    loadItems = data => {
+        var content = data.content
+        var items = data.items
+        var itemLen = data.items?.length ?? 0
+        var result = []
+        for (var i=0; i<itemLen; i++) {
+            var item = items[i]
+            if (content.indexOf(item.name) !== -1) {
+                var cuts = content.split(item.name)
+                if (cuts[0].length > 0) {
+                    result.push(
+                        <span key={'span0' + i}>{cuts[0]}</span>
+                    )
+                }
+                if (item.type === 'link') {
+                    result.push(
+                        <Link key={item.name} className={this.props.classes.link} component={RouterLink} to={item.link}>{item.text}</Link>
+                    )
+                } else {
+                    var itemClasses = item.classes?.map(x => this.props.classes['text_' + x]) ?? ""
+                    result.push(
+                        <span key={'span1' + i} className={itemClasses}>{item.text}</span>
+                    )
+                }
+            }
+            content = cuts[1]
+        }
+        if (content.length > 0) result.push(content)
+        return (result)
+    }
+
     render = () => (
         <>
             {this.props.notify.show === true &&
                 <div className={this.props.classes.root}>
                     <div className={this.props.classes.content}>
-                        <div>{this.props.notify.content}</div>
+                        <div>{this.loadItems(this.props.notify)}</div>
                         <div className={this.props.classes.close}>
                             <CloseIcon onClick={this.onCloseClick} />
                         </div>
