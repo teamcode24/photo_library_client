@@ -52,7 +52,7 @@ class Login extends React.Component {
             this.props.autoCancelRequest(this.props.login(data))
                 .then(res => {
                     this.props.offLoading()
-                    this.props.redirect("/account", "", {
+                    this.props.redirect(PathName.user.account, "", {
                         type: "success",
                         message: this.props.t('user.login.message_success'),
                     })

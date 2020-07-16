@@ -58,11 +58,15 @@ class Register extends React.Component {
             this.props.onLoading()
             this.props.autoCancelRequest(this.props.createUser(data))
                 .then(res => {
-                    GlobalDispatch.notify.show({
-                        content: res.data.message
-                    })
-                    if (res.data.success === true) {
-                        this.props.redirect("/login", "", {
+                    if (res.data.success === false) {
+                        GlobalDispatch.message.show({
+                            content: res.data.message
+                        })
+                    } else {
+                        GlobalDispatch.notify.show({
+                            content: res.data.message,
+                        })
+                        this.props.redirect(PathName.user.login, "", {
                             type: "success",
                             message: this.props.t('user.register.message_success'),
                         })

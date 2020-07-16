@@ -38,7 +38,7 @@ class ForgotPassword extends React.Component {
             this.props.autoCancelRequest(this.props.resetPassword(data))
                 .then(res => {
                     this.props.offLoading()
-                    this.props.redirect("/login", "", {
+                    this.props.redirect(PathName.user.login, "", {
                         type: "success",
                         message: this.props.t('user.forgot_password.message_success'),
                     })

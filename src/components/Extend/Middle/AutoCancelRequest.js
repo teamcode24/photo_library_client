@@ -5,9 +5,8 @@ const AutoCancelRequest = ChildComponent => {
         constructor (props) {
             super(props)
             this.state = {}
+            this.cancelablePromises = []
         }
-
-        cancelablePromises = []
 
         autoCancelRequest = request => {
             this.cancelablePromises.push(request)
