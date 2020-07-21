@@ -67,6 +67,7 @@ class Register extends React.Component {
                     } else {
                         GlobalDispatch.notify.show({
                             content: res.data.message,
+                            type: "success",
                             items: [
                                 {
                                     name: "__email__",

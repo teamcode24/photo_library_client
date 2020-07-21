@@ -40,6 +40,30 @@ const NotifyStyles = theme => ({
     text_italic: {
         fontStyle: "italic",
     },
+    type_dark: {
+        color: "white",
+        backgroundColor: "black",
+    },
+    type_light: {
+        color: "black",
+        backgroundColor: "#f8f9fa",
+    },
+    type_success: {
+        color: "white",
+        backgroundColor: "#28a745",
+    },
+    type_danger: {
+        color: "white",
+        backgroundColor: "#dc3545",
+    },
+    type_warning: {
+        color: "white",
+        backgroundColor: "#ffc107",
+    },
+    type_info: {
+        color: "white",
+        backgroundColor: "#17a2b8",
+    },
 })
 
 class Notify extends React.Component {
@@ -88,7 +112,7 @@ class Notify extends React.Component {
     render = () => (
         <>
             {this.props.notify.show === true &&
-                <div className={this.props.classes.root}>
+                <div className={`${this.props.classes.root} type_${this.props.notify.type ?? "dark"}`}>
                     <div className={this.props.classes.content}>
                         <div>{this.loadItems(this.props.notify)}</div>
                         <div className={this.props.classes.close}>
