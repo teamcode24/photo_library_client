@@ -1,20 +1,20 @@
-####Clone trang unsplash.com sử dụng React và MongoDB
-#####Tìm hiểu design: MinhBB
-#####Code: Tuyến
+#### Clone trang unsplash.com sử dụng React và MongoDB
+##### Mô tả: Trang web hiển thị ảnh theo chủ đề, người dùng có thể đăng ký để lưu và tải ảnh.
+##### Tìm hiểu design: MinhBB
+##### Code: TuyếnNV
 
 
 
-####Một số demo:
-   - Gọi api sử dụng thư viện axios và fetch
-   - Đa ngôn ngữ sử dụng i18n
+#### Một số demo:
+   - Thư viện axios và fetch
+   - Thư viện i18n
+   - Thư viện react-redux
+   - Thư viện react-persist
    - Custom theme của material ui
-   - Cài đặt một số higher-order components: mặc định, yêu cầu đăng nhập
-   - Cài đặt một số component: toàn cục, hiển thị loading, chuyển hướng
-   - Quản lý state dùng react-redux
-Lưu trạng thái state dùng react-persist
+   - Cài đặt higher-order components
+   - Cài đặt component toàn cục, hiển thị loading
 
 
-
-####Một số chức năng phát triển tiếp:
-   - Validate props và đặt giá trị mặc định
-   - Viết test giao diện và gọi api
+#### Phát triển tiếp:
+   - Test giao diện và api
+   - Validate và giá trị mặc định của props
