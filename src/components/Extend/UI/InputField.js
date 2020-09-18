@@ -28,7 +28,7 @@ const InputFieldStyles = theme => ({
 })
 
 class InputField extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {}
     }
@@ -41,7 +41,7 @@ class InputField extends React.Component {
                     <div className={this.props.classes.action}>{this.props.children}</div>
                 </div>
             }
-            
+
             <div className={this.props.classes.content}>
                 <input {...this.props.input}
                     className={`${this.props.classes.input} ${this.props.input.type === "button" ? this.props.classes.buttonStyle : ""}`}

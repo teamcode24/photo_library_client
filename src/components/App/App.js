@@ -1,21 +1,22 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Store, Persistor } from '../../services/store/Storage'
+import { I18nextProvider } from 'react-i18next'
+import i18next from 'i18next'
+import { ThemeProvider } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles'
+import ExtendTheme from '../../libraryConfig/theme/ExtendTheme'
+import Sidebar from '../Pages/Redirect/Sidebar'
 import Message from '../Extend/Message/Message'
 import Notify from "../Extend/Message/Notify"
 import Header from '../Pages/Redirect/Header'
 import HomeRouter from '../Pages/Main/HomeRouter'
 import UserRouter from '../Pages/Main/UserRouter'
 import PathName from './PathName'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import { Store, Persistor } from '../../services/store/Storage'
-import { I18nextProvider } from 'react-i18next'
-import i18next from 'i18next'
 import '../../libraryConfig/Axios'
 import '../../libraryConfig/i18n'
-import { ThemeProvider } from '@material-ui/core/styles'
-import { withStyles } from '@material-ui/core/styles'
-import ExtendTheme from '../../libraryConfig/theme/ExtendTheme'
 
 const AppStyles = theme => ({
     root: {},
@@ -41,9 +42,10 @@ class App extends React.Component {
                     <PersistGate persistor={Persistor} loading={null}>
                         <BrowserRouter>
                             <div className={this.props.classes.topPanel}>
-                                <Message></Message>
+                                <Sidebar />
+                                <Message />
                                 <Notify />
-                                <Header></Header>
+                                <Header />
                             </div>
                             <div className={this.props.classes.mainPanel}>
                                 <Switch>

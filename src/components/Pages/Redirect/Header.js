@@ -2,6 +2,7 @@ import React from "react"
 import { Link as RouterLink } from "react-router-dom"
 import DefaultComponent from "../../Extend/Default/DefaultComponent"
 import PathName from "../../App/PathName"
+import GlobalDispatch from "../../../services/store/GlobalDispatch"
 
 import { fade, withStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
@@ -92,11 +93,15 @@ class Header extends React.Component {
         this.state = {}
     }
 
+    onMenuClick = e => {
+        GlobalDispatch.sidebar.toggle()
+    }
+
     render = () => (
         <div className={this.props.classes.root}>
-            <AppBar position="sticky" className={this.props.classes.header} ref={this.refAppbar}>
+            <AppBar position="sticky" className={this.props.classes.header}>
                 <Toolbar>
-                    <IconButton edge="start" className={this.props.classes.menuButton} color="inherit">
+                    <IconButton edge="start" className={this.props.classes.menuButton} color="inherit" onClick={this.onMenuClick}>
                         <MenuIcon />
                     </IconButton>
                     <div className={this.props.classes.search}>

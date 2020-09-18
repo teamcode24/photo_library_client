@@ -6,6 +6,7 @@ import { PhotosReducer } from './Photos/PhotosReducer'
 import { TopicsReducer } from './Topics/TopicsReducer'
 import { MessageReducer } from './Message/MessageReducer'
 import { NotifyReducer } from './Message/NotifyReducer'
+import { SidebarReducer } from './Sidebar/SidebarReducer'
 
 const Home = {
     photo: PhotosReducer,
@@ -23,6 +24,7 @@ const AllReducer = {
     user: UserReducer,
     home: combineReducers(Home),
     message: combineReducers(Message),
+    sidebar: SidebarReducer,
 }
 
 export default combineReducers(AllReducer)
