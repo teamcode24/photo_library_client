@@ -44,7 +44,7 @@ class TopicInfo extends React.Component {
         var data = {
             path: this.props.match.params[0]
         }
-        this.props.onLoading()
+        // this.props.onLoading()
         this.props.autoCancelRequest(this.props.getTopic(data))
         .then(res => {
             this.props.offLoading()
