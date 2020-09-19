@@ -102,8 +102,7 @@ class Header extends React.Component {
             <img
               src="/images/home-icon.svg"
               alt="home-icon"
-              style={{ height: 60, width: 60 }}
-              
+              style={{ height: 60, width: 60, marginRight: 20 }}
             />
           </RouterLink>
           <div className={this.props.classes.search}>
